@@ -18,3 +18,13 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::resource('users','UserController');
+// Route::group(['middleware'=>'web'],function(){
+//   Route::get('/handlelogin', function()
+//   {
+//
+//   });
+// });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
