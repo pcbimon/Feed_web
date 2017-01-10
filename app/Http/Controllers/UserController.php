@@ -15,6 +15,8 @@ class UserController extends Controller
     public function index()
     {
         //
+        $users = User::latest()->get();
+        // return $user;
         return view('main.index',compact('users'));
     }
 
@@ -37,6 +39,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $user = new User;
+        $user->name = $request->email;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->path_pic = "";
+        // return $request->all();
+        $user->save();
+        return redirect('users');
     }
 
     /**

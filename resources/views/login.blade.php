@@ -49,24 +49,24 @@
         {{csrf_field()}}
         <div class="input">
            <label for="regname">Email</label>
-           <input type="text" name="regemail" id="regname">
+           <input type="text" name="email" id="regname">
            <span class="spin"></span>
         </div>
 
         <div class="input">
            <label for="regpass">Password</label>
-           <input type="password" name="regpass" id="regpass">
+           <input type="password" name="password" id="regpass">
            <span class="spin"></span>
         </div>
 
         <div class="input">
            <label for="reregpass">Repeat Password</label>
-           <input type="password" name="reregpass" id="reregpass">
+           <input type="password" name="repassword" id="reregpass">
            <span class="spin"></span>
         </div>
 
         <div class="button">
-           <button><span>NEXT</span></button>
+           <button><span>Register</span></button>
         </div>
       </form>
 
