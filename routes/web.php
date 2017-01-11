@@ -14,6 +14,9 @@ use App\User;
 Route::get('/', function () {
     return view('indexfirst');
 });
+Route::get('/main', function () {
+    return view('main.index');
+});
 // Route::get('/login', function () {
 //     return view('login');
 // });
