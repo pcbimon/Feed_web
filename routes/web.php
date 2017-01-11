@@ -14,9 +14,9 @@ use App\User;
 Route::get('/', function () {
     return view('indexfirst');
 });
-Route::get('/main', function () {
-    return view('main.index');
-});
+// Route::get('/main', function () {
+//     return view('main.index');
+// });
 // Route::get('/login', function () {
 //     return view('login');
 // });
@@ -25,4 +25,5 @@ Route::get('/checkuser', 'LoginController@checkuser');
 Route::group(['middleware'=>['web']],function(){
   Route::get('/login',['as'=>'login','uses'=>'AuthController@login']);
   Route::get('/handlelogin',['as'=>'handlelogin','uses'=>'AuthController@handlelogin']);
+  Route::get('/main',['middleware'=>'auth','as'=>'main','uses'=>'UserController@main']);
 });

@@ -94,4 +94,8 @@ class UserController extends Controller
     {
         //
     }
+    public function main()
+    {
+      return view('main.index');
+    }
 }
