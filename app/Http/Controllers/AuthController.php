@@ -13,12 +13,21 @@ class AuthController extends Controller
     }
     public function handlelogin(Request $request)
     {
-      $data = $request->only('email','password');
+      $this->validate($request,[
+        'email'=> 'required|email',
+        'password'=>'required'
+      ]);
+      $data = $request->only('email','password1');
       if (\Auth::attempt($data)) {
 
         // return "Login Success";
         return redirect('main');
       }
       return back()->withInput();
+    }
+    public function logout()
+    {
+      \Auth::logout();
+      return redirect()->route('login');
     }
 }

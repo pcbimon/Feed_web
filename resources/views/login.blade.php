@@ -29,7 +29,7 @@
 
         <div class="input">
            <label for="pass">Password</label>
-           <input type="password" name="password" id="pass">
+           <input type="password" name="password1" id="pass">
            <span class="spin"></span>
         </div>
 

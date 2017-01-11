@@ -26,4 +26,5 @@ Route::group(['middleware'=>['web']],function(){
   Route::get('/login',['as'=>'login','uses'=>'AuthController@login']);
   Route::get('/handlelogin',['as'=>'handlelogin','uses'=>'AuthController@handlelogin']);
   Route::get('/main',['middleware'=>'auth','as'=>'main','uses'=>'UserController@main']);
+  Route::get('/logout',['as'=>'logout','uses'=>'AuthController@logout']);
 });
