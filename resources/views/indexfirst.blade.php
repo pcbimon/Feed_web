@@ -28,7 +28,7 @@
                   </li>
 
                   <li class="page-scroll">
-                      <a href="{{ url('admin/login') }}" target="_blank">Login</a><!--{{ url('admin') }}-->
+                      <a href="{{ url('/login') }}" target="_blank">Login</a><!--{{ url('admin') }}-->
                   </li>
               </ul>
           </div>
