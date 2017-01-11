@@ -20,7 +20,7 @@
    <div class="box">
 
       <div class="title">LOGIN</div>
-      <form class="" action="index.html" method="post">
+      <form class="" action="/checkuser" method="get">
         <div class="input">
            <label for="name">Email</label>
            <input type="text" name="username" id="name">
