@@ -7,6 +7,7 @@
 
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,latin-ext'>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
       <link rel="stylesheet" href="css/style.css">
 
@@ -31,13 +32,22 @@
            <label for="pass">Password</label>
            <input type="password" name="password" id="pass">
            <span class="spin"></span>
+
+
         </div>
 
         <div class="button login">
            <button><span>GO</span> <i class="fa fa-check"></i></button>
         </div>
+        @if (count($errors)>0)
+          <div class="col-md-12">
+            @foreach ($errors->all() as $error)
+              <li class="error">{{$error}}</li>
+            @endforeach
+          </div>
+        @endif
 
-        <a href="" class="pass-forgot">Forgot your password?</a>
+        {{-- <a href="" class="pass-forgot">Forgot your password?</a> --}}
       </form>
 
 
