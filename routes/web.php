@@ -19,7 +19,7 @@ Route::get('/', function () {
 // });
 Route::resource('users','UserController');
 Route::get('/checkuser', 'LoginController@checkuser');
-Route::group('middleware'=>'web',function(){
+Route::group(['middleware'=>['web']],function(){
   Route::get('/login',['as'=>'login','uses'=>'AuthController@login']);
   Route::get('/handlelogin',['as'=>'handlelogin','uses'=>'AuthController@handlelogin']);
 });

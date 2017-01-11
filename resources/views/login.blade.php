@@ -23,13 +23,13 @@
       <form class="" action="/handlelogin" method="get">
         <div class="input">
            <label for="name">Email</label>
-           <input type="text" name="username" id="name">
+           <input type="text" name="email" id="name">
            <span class="spin"></span>
         </div>
 
         <div class="input">
            <label for="pass">Password</label>
-           <input type="password" name="pass" id="pass">
+           <input type="password" name="password" id="pass">
            <span class="spin"></span>
         </div>
 
