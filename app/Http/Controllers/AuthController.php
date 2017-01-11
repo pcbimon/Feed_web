@@ -15,8 +15,9 @@ class AuthController extends Controller
     {
       $data = $request->only('email','password');
       if (\Auth::attempt($data)) {
-        return "Login Success";
-        return redirect()->intended('home');
+
+        // return "Login Success";
+        return redirect('main');
       }
       return back()->withInput();
     }

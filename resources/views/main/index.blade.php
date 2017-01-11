@@ -1,7 +1,9 @@
 @extends('layouts.main-footer')
-@extends('layouts.menu')
+
 @extends('layouts.index')
 @section('content')
+@extends('layouts.menu')
+  @extends('layouts.menutop')
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
