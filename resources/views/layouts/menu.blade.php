@@ -26,8 +26,8 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
-      <li class="active treeview">
-        <a href="#">
+      <li class="treeview">
+        <a href="\main">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
@@ -81,7 +81,7 @@
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i> การวิเคราะห์</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> หัวข้อการวิเคราะห์</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> การจัดการผู้ใช้ระบบ</a></li>
+          <li><a href="/muser"><i class="fa fa-circle-o"></i> การจัดการผู้ใช้ระบบ</a></li>
           <li>
             <a href="#"><i class="fa fa-circle-o"></i> รายงาน
               <span class="pull-right-container">

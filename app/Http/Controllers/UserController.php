@@ -18,7 +18,7 @@ class UserController extends Controller
         //
         $users = User::latest()->get();
         // return $user;
-        return view('main.index',compact('users'));
+        return view('main.user_management',compact('users'));
     }
 
     /**
@@ -97,5 +97,9 @@ class UserController extends Controller
     public function main()
     {
       return view('main.index');
+    }
+    public function user_management()
+    {
+      return view('main.user_management');
     }
 }
