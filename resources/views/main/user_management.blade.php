@@ -44,7 +44,7 @@
                   {!! Form::text('inputname', null, ['class' => 'form-control', 'required' => 'required']) !!}
                   <small class="text-danger">{{ $errors->first('inputname') }}</small>
               </div> --}}
-              {{ csrf_field() }}
+
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -77,65 +77,50 @@
           				@endforeach
                 </tbody>
               </table>
-              <div id="myModal" class="modal fade" role="dialog">
+              <div id="CreateModal" class="modal fade" role="dialog">
+                <form class="form-horizontal" role="form" action="/muser" method="post">
+                  {{-- {{ csrf_field() }} --}}
+                  <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             		<div class="modal-dialog">
             			<!-- Modal content-->
             			<div class="modal-content">
             				<div class="modal-header">
             					<button type="button" class="close" data-dismiss="modal">&times;</button>
-            					<h4 class="modal-title"></h4>
+            					<h4 class="modal-title">สร้างผู้ใช้ใหม่</h4>
             				</div>
             				<div class="modal-body">
-            					<form class="form-horizontal" role="form">
-            						<div class="form-group">
-            							<label class="control-label col-sm-2" for="id">ID:</label>
-            							<div class="col-sm-10">
-            								<input type="text" class="form-control" id="fid" disabled>
-            							</div>
-            						</div>
-            						<div class="form-group">
-            							<label class="control-label col-sm-2" for="name">Name:</label>
-            							<div class="col-sm-10">
-            								<input type="name" class="form-control" id="n">
-            							</div>
-            						</div>
-                        <div class="form-group">
-            							<label class="control-label col-sm-2" for="name">Email:</label>
-            							<div class="col-sm-10">
-            								<input type="name" class="form-control" id="mail">
-            							</div>
-            						</div>
-            					</form>
-            					<div class="deleteContent">
-            						Are you Sure you want to delete <span class="dname"></span> ? <span
-            							class="hidden did"></span>
-            					</div>
-                      <div class="CreateContent">
-                        <form>
+
+
+
                           <div class="form-group">
-                            <label for="email">ชื่อ:</label>
-                            <input type="email" class="form-control" id="email">
+                            <label class="control-label col-sm-2" for="email">ชื่อ:</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" name="user_name">
+                            </div>
                           </div>
                           <div class="form-group">
-                            <label for="pwd">Email:</label>
-                            <input type="password" class="form-control" id="pwd">
+                            <label class="control-label col-sm-2" for="pwd">Email:</label>
+                            <div class="col-sm-10">
+                            <input type="email" class="form-control" name="user_email">
+                            </div>
                           </div>
                           <div class="form-group">
-                            <label for="pwd">รหัสผ่าน:</label>
-                            <input type="password" class="form-control" id="pwd">
+                            <label class="control-label col-sm-2" for="pwd">รหัสผ่าน:</label>
+                            <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password">
+                            </div>
                           </div>
                           <div class="form-group">
-                            <label for="pwd">ระดับผู้ใช้:</label>
-                            <input type="text" class="form-control" id="leveluser">
+                            <label class="control-label col-sm-2" for="pwd">ระดับผู้ใช้:</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" name="user_lavel">
+                            </div>
                           </div>
 
-                        </form>
-
-            					</div>
             					<div class="modal-footer">
-            						<button type="button" class="btn actionBtn" data-dismiss="modal">
-            							<span id="footer_action_button" class='glyphicon'> </span>
-            						</button>
+              						<button type="submit" class="btn btn-primary">
+              							<span class='glyphicon glyphicon glyphicon-ok'></span> Create User
+              						</button>
             						<button type="button" class="btn btn-warning" data-dismiss="modal">
             							<span class='glyphicon glyphicon-remove'></span> Close
             						</button>
@@ -143,7 +128,89 @@
             				</div>
             			</div>
             		</div>
+                </form>
             	</div>
+
+              <div id="UpdateModal" class="modal fade" role="dialog">
+                <form class="form-horizontal" role="form" action="" method="POST" id="Updateform">
+                  <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                  <input type="hidden" name="_method" value="PUT">
+            		<div class="modal-dialog">
+            			<!-- Modal content-->
+            			<div class="modal-content">
+            				<div class="modal-header">
+            					<button type="button" class="close" data-dismiss="modal">&times;</button>
+            					<h4 class="modal-title">แก้ไขข้อมูล</h4>
+            				</div>
+            				<div class="modal-body">
+
+            						<div class="form-group">
+            							<label class="control-label col-sm-2" for="id">ID:</label>
+            							<div class="col-sm-10">
+            								<input type="text" class="form-control" name="id" id="fid" disabled>
+            							</div>
+            						</div>
+            						<div class="form-group">
+            							<label class="control-label col-sm-2" for="name">Name:</label>
+            							<div class="col-sm-10">
+            								<input type="name" class="form-control" name="user_name" id="n">
+            							</div>
+            						</div>
+                        <div class="form-group">
+            							<label class="control-label col-sm-2" for="name">Email:</label>
+            							<div class="col-sm-10">
+            								<input type="name" class="form-control" name="user_email" id="mail">
+            							</div>
+            						</div>
+
+
+            					<div class="modal-footer">
+              						<button type="submit" class="btn btn-success">
+              							<span class='glyphicon glyphicon-pencil'> </span>Update
+              						</button>
+            						<button type="button" class="btn btn-warning" data-dismiss="modal">
+            							<span class='glyphicon glyphicon-remove'></span> Close
+            						</button>
+            					</div>
+            				</div>
+            			</div>
+            		</div>
+                </form>
+            	</div>
+
+              <div id="DeleteModal" class="modal fade" role="dialog">
+                <form class="form-horizontal" role="form" action="/muser/" method="POST" id="Deleteform">
+            		<div class="modal-dialog">
+            			<!-- Modal content-->
+            			<div class="modal-content">
+            				<div class="modal-header">
+            					<button type="button" class="close" data-dismiss="modal">&times;</button>
+            					<h4 class="modal-title">ลบข้อมูล</h4>
+            				</div>
+            				<div class="modal-body">
+
+                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                          <input type="hidden" name="_method" value="Delete">
+                        <div class="deleteContent">
+              						Are you Sure you want to delete <span class="dname"></span> ? <span
+              							class="hidden did"></span>
+              					</div>
+
+            					<div class="modal-footer">
+              						<button type="submit" class="btn btn-danger">
+              							<span  class='glyphicon glyphicon-ok'> </span> Delete
+              						</button>
+            						<button type="button" class="btn btn-warning" data-dismiss="modal">
+            							<span class='glyphicon glyphicon-remove'></span> Close
+            						</button>
+            					</div>
+            				</div>
+            			</div>
+            		</div>
+                </form>
+            	</div>
+
+
             </div>
 
           </div>
@@ -170,48 +237,25 @@
       });
       });
       $(document).on('click', '.edit-modal', function() {
-          $('#footer_action_button').text(" Update");
-          $('#footer_action_button').addClass('glyphicon-check');
-          $('#footer_action_button').removeClass('glyphicon-trash');
-          $('.actionBtn').addClass('btn-success');
-          $('.actionBtn').removeClass('btn-danger');
-          $('.actionBtn').addClass('edit');
-          $('.modal-title').text('Edit');
-          $('.deleteContent').hide();
-          $('.form-horizontal').show();
-          $('.CreateContent').hide();
+          var id = $(this).data('id');
           $('#fid').val($(this).data('id'));
           $('#n').val($(this).data('name'));
           $('#mail').val($(this).data('mail'));
-          $('#myModal').modal('show');
+          $('#UpdateModal').modal('show');
+          document.getElementById("Updateform").action = "/muser/"+id;
       });
       $(document).on('click', '.delete-modal', function() {
-          $('#footer_action_button').text(" Delete");
-          $('#footer_action_button').removeClass('glyphicon-check');
-          $('#footer_action_button').addClass('glyphicon-trash');
-          $('.actionBtn').removeClass('btn-success');
-          $('.actionBtn').addClass('btn-danger');
-          $('.actionBtn').addClass('delete');
+
+          var id = $(this).data('id');
           $('.modal-title').text('Delete User');
           $('.did').text($(this).data('id'));
-          $('.deleteContent').show();
-          $('.CreateContent').hide();
-          $('.form-horizontal').hide();
+
           $('.dname').html($(this).data('name'));
-          $('#myModal').modal('show');
+          $('#DeleteModal').modal('show');
+          document.getElementById("Deleteform").action = "/muser/"+id;
       });
       $(document).on('click', '.create-modal', function() {
-          $('#footer_action_button').text(" Create");
-          $('#footer_action_button').addClass('glyphicon-check');
-          $('#footer_action_button').removeClass('glyphicon-trash');
-          $('.actionBtn').addClass('btn-success');
-          $('.actionBtn').addClass('create');
-          $('.modal-title').text('Create User');
-          $('.deleteContent').hide();
-          $('.CreateContent').show();
-          $('.form-horizontal').hide();
-          $('.dname').html($(this).data('name'));
-          $('#myModal').modal('show');
+          $('#CreateModal').modal('show');
       });
   </script>
 @endsection

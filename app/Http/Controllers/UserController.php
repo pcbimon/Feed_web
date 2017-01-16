@@ -41,13 +41,14 @@ class UserController extends Controller
     {
         //
         $user = new User;
-        $user->name = $request->email;
-        $user->email = $request->email;
+        $user->name = $request->user_name;
+        $user->email = $request->user_email;
         $user->password = Hash::make($request->password);
-        $user->path_pic = "";
+        $user->path_pic = "img/avatar5.png";
         // return $request->all();
         $user->save();
-        return redirect('users');
+        return redirect('muser');
+        // return $request->all();
     }
 
     /**
@@ -82,6 +83,13 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::where('id',$id)->first();
+        $user->name = $request->user_name;
+        $user->email = $request->user_email;
+        $user->save();
+        // $post->update($request->all());
+        return redirect('muser');
+        // return $request->all();
     }
 
     /**
@@ -93,6 +101,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::where('id',$id)->delete();
+        return redirect('muser');
     }
     public function main()
     {

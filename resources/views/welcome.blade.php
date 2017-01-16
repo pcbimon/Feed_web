@@ -150,6 +150,7 @@
         $('#fid').val($(this).data('id'));
         $('#n').val($(this).data('name'));
         $('#myModal').modal('show');
+				
     });
     $(document).on('click', '.delete-modal', function() {
 			alert('1');
