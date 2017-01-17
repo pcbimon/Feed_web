@@ -78,7 +78,8 @@
                 </tbody>
               </table>
               <div id="CreateModal" class="modal fade" role="dialog">
-                <form class="form-horizontal" role="form" action="/muser" method="post">
+                {!! Form::open(['method'=>'POST','action'=>'UserController@store','files'=>true,'class'=>'form-horizontal']) !!}
+                {{-- <form class="form-horizontal" role="form" action="/muser" method="post"> --}}
                   {{-- {{ csrf_field() }} --}}
                   <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             		<div class="modal-dialog">
@@ -89,9 +90,6 @@
             					<h4 class="modal-title">สร้างผู้ใช้ใหม่</h4>
             				</div>
             				<div class="modal-body">
-
-
-
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="email">ชื่อ:</label>
                             <div class="col-sm-10">
@@ -117,6 +115,20 @@
                             </div>
                           </div>
 
+                          <div class="form-group">
+                            <label class="control-label col-sm-2" for="pwd">รูปภาพผู้ใช้ :</label>
+                            <div class="col-sm-10">
+                              <div class="input-group">
+                                <input type="file" class="form-control" accept="image/*" name="file">
+                                {{-- <span class="input-group-btn">
+                                  <button class="btn btn-secondary" type="button">Go!</button>
+                                </span> --}}
+                              </div>
+                              {{-- <input type="file" name="pic" accept="image/*" class="btn btn-primary"> --}}
+                              {{-- {!! Form::file('file', ['required' => 'required']) !!} --}}
+                            </div>
+                          </div>
+
             					<div class="modal-footer">
               						<button type="submit" class="btn btn-primary">
               							<span class='glyphicon glyphicon glyphicon-ok'></span> Create User
@@ -128,7 +140,7 @@
             				</div>
             			</div>
             		</div>
-                </form>
+                {!! Form::close() !!}
             	</div>
 
               <div id="UpdateModal" class="modal fade" role="dialog">
@@ -257,5 +269,6 @@
       $(document).on('click', '.create-modal', function() {
           $('#CreateModal').modal('show');
       });
+
   </script>
 @endsection

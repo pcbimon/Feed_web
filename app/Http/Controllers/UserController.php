@@ -40,15 +40,26 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+
+        // return redirect('muser');
+        // return $request->all();
+        $input = $request->all();
+        if ($file = $request->file('file')) {
+          $name = $file->getClientOriginalName();
+          $file->move('img/user',$name);
+          $input['path']=$name;//file <--name of column
+
+        }
+        $pathpic = 'img/user/'.$input['path'];
+        // return $pathpic;
         $user = new User;
         $user->name = $request->user_name;
         $user->email = $request->user_email;
         $user->password = Hash::make($request->password);
-        $user->path_pic = "img/avatar5.png";
+        $user->path_pic = $pathpic;
         // return $request->all();
         $user->save();
         return redirect('muser');
-        // return $request->all();
     }
 
     /**
