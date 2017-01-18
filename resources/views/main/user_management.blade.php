@@ -93,13 +93,13 @@
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="email">ชื่อ:</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" name="user_name">
+                            <input type="text" class="form-control" name="user_name" required="required">
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">Email:</label>
                             <div class="col-sm-10">
-                            <input type="email" class="form-control" name="user_email">
+                            <input type="email" class="form-control" name="user_email" required="required|email|unique:users,email">
                             </div>
                           </div>
                           <div class="form-group">

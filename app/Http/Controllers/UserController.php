@@ -39,27 +39,42 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
 
-        // return redirect('muser');
-        // return $request->all();
-        $input = $request->all();
+        //
+        $this->validate($request,[
+          'user_name' => 'required',
+          'user_email'=> 'required|email',
+          'password'=>'required',
+          'user_level'=> 'required'
+        ]);
+        $pic = "";
+        // // return redirect('muser');
+        // // return $request->all();
+        // $input = $request->all();
+        $user = new User;
         if ($file = $request->file('file')) {
           $name = $file->getClientOriginalName();
+          // $name = $request->user_email;
           $file->move('img/user',$name);
           $input['path']=$name;//file <--name of column
-
+          $pathpic = 'img/user/'.$input['path'];
         }
-        $pathpic = 'img/user/'.$input['path'];
+        else {
+          $pathpic = "img/avatar5.png";
+        }
+
         // return $pathpic;
-        $user = new User;
+
         $user->name = $request->user_name;
         $user->email = $request->user_email;
         $user->password = Hash::make($request->password);
         $user->path_pic = $pathpic;
-        // return $request->all();
+
         $user->save();
         return redirect('muser');
+
+
+        // return $pic;
     }
 
     /**
@@ -122,5 +137,9 @@ class UserController extends Controller
     public function user_management()
     {
       return view('main.user_management');
+    }
+    public function check_email($email)
+    {
+      $user = User::where('email', $email)->count();
     }
 }
