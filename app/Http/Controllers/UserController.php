@@ -28,7 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('main.user.create');
+
     }
 
     /**
@@ -43,9 +44,9 @@ class UserController extends Controller
         //
         $this->validate($request,[
           'user_name' => 'required',
-          'user_email'=> 'required|email',
+          'email'=> 'required|email|unique:users',
           'password'=>'required',
-          'user_level'=> 'required'
+          // 'user_level'=> 'required'
         ]);
         $pic = "";
         // // return redirect('muser');
@@ -53,7 +54,7 @@ class UserController extends Controller
         // $input = $request->all();
         $user = new User;
         if ($file = $request->file('file')) {
-          $name = $file->getClientOriginalName();
+          $name = $request->email;
           // $name = $request->user_email;
           $file->move('img/user',$name);
           $input['path']=$name;//file <--name of column
@@ -66,7 +67,7 @@ class UserController extends Controller
         // return $pathpic;
 
         $user->name = $request->user_name;
-        $user->email = $request->user_email;
+        $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->path_pic = $pathpic;
 
@@ -85,7 +86,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+      // $user = User::findOrFail($id);
+      // return view('user.edit',compact('user'));
     }
 
     /**
@@ -97,6 +99,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::findOrFail($id);
+        return view('main.user.edit',compact('user'));
     }
 
     /**
@@ -109,9 +113,27 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+          'user_name' => 'required',
+          'email'=> 'required|email|unique:users',
+          'password'=>'required',
+          'user_level'=> 'required'
+        ]);
+        if ($file = $request->file('file')) {
+          $name = $request->email;
+          // $name = $request->user_email;
+          $file->move('img/user',$name);
+          $input['path']=$name;//file <--name of column
+          $pathpic = 'img/user/'.$input['path'];
+        }
+        else {
+          $pathpic = "img/avatar5.png";
+        }
         $user = User::where('id',$id)->first();
         $user->name = $request->user_name;
-        $user->email = $request->user_email;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->path_pic = $pathpic;
         $user->save();
         // $post->update($request->all());
         return redirect('muser');

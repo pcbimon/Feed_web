@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('path_pic');
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

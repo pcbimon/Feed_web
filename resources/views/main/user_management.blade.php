@@ -11,8 +11,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        การจัดการข้อมูลผู้ใช้
+        <small>Users Management</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="box-body">
-              <button type="button" class="btn btn-primary create-modal" name="button">เพิ่มข้อมูลผู้ใช้ใหม่</button>
+              <button type="button" class="btn btn-primary btn-lg " name="button" onclick="window.location='{{ url("muser/create") }}'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> เพิ่มข้อมูลผู้ใช้ใหม่</button>
               <br/><br/>
               {{-- Content --}}
 
@@ -64,9 +64,8 @@
           					<td>{{$item->name}}</td>
                     <td>{{$item->email}}</td>
                     <td>ผู้ดูแลระบบ</td>
-                    <td><img src="{{$item->path_pic}}" alt="userpic" width="100px" height="100px"></td>
-          					<td><button class="edit-modal btn btn-info" data-id="{{$item->id}}"
-          							data-name="{{$item->name}}" data-mail ="{{$item->email}}">
+                    <td><img src= {{ URL::asset($item->path_pic) }} width="100px" height="100px"></td>
+          					<td><button class="btn btn-info" onclick="window.location='{{ url("muser/$item->id/edit") }}'">
           							<span class="glyphicon glyphicon-edit"></span> Edit
           						</button>
           						<button class="delete-modal btn btn-danger"
