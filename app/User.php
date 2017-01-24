@@ -27,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function typeusers()
+    //ผู้ใช้แต่ละคนมี 1 ประเภท
+    {
+      return $this->belongsTo('App\TypeUser');
+    }
 }

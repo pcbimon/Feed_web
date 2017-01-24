@@ -72,7 +72,11 @@
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">ระดับผู้ใช้:</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" name="user_lavel">
+                              <select class="form-control">
+                              @foreach($typeusers as $item)
+                                  <option>{{$item->TypeName}}</option>
+                      				@endforeach
+                            </select>
                             </div>
                           </div>
 

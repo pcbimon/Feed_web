@@ -29,7 +29,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
   <!-- Content Wrapper. Contains page content -->
@@ -57,7 +57,7 @@
 <script src="{{ URL::asset('dist/js/demo.js') }}"></script>
 
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap-filestyle.min.js') }}"> </script>
-<!-- page script -->  
+<!-- page script -->
 <!-- page script -->
 @yield('footerscript');
 

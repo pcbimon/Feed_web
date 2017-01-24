@@ -63,7 +63,7 @@
           					<td>{{$item->id}}</td>
           					<td>{{$item->name}}</td>
                     <td>{{$item->email}}</td>
-                    <td>ผู้ดูแลระบบ</td>
+                    <td>{{$item->TypeName}}</td>
                     <td><img src= {{ URL::asset($item->path_pic) }} width="100px" height="100px"></td>
           					<td><button class="btn btn-info" onclick="window.location='{{ url("muser/$item->id/edit") }}'">
           							<span class="glyphicon glyphicon-edit"></span> Edit

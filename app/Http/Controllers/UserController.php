@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\TypeUser;
 
 class UserController extends Controller
 {
@@ -16,8 +17,10 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::latest()->get();
-        // return $user;
+        $users = User::join('type_users','type_user_id','=','type_users.id')->get();
+        // $typeusers = TypeUser::find(1)->users()->get();
+        // $typeusers = TypeUser::
+        // return $users;
         return view('main.user_management',compact('users'));
     }
 
@@ -28,7 +31,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('main.user.create');
+        $typeusers = TypeUser::all();
+        return view('main.user.create',compact('typeusers'));
 
     }
 
