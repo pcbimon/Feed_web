@@ -80,7 +80,8 @@
                             <label class="control-label col-sm-2" for="pwd">รูปภาพผู้ใช้ :</label>
                             <div class="col-sm-10">
                               <div class="input-group">
-                                <input type="file" class="form-control" accept="image/*" name="file" value="{{$user->path_pic}}">
+                                <input type="file" class="filestyle" data-buttonText=" Browse" data-buttonName="btn-primary">
+                                {{-- <input type="file" class="form-control" accept="image/*" name="file" value="{{$user->path_pic}}"> --}}
                                 {{-- <span class="input-group-btn">
                                   <button class="btn btn-secondary" type="button">Go!</button>
                                 </span> --}}

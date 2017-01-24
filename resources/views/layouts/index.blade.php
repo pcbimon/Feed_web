@@ -55,7 +55,9 @@
 <script src="{{ URL::asset('dist/js/app.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::asset('dist/js/demo.js') }}"></script>
-<!-- page script -->
+
+<script type="text/javascript" src="{{ URL::asset('js/bootstrap-filestyle.min.js') }}"> </script>
+<!-- page script -->  
 <!-- page script -->
 @yield('footerscript');
 

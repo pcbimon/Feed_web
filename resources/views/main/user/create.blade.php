@@ -80,10 +80,9 @@
                             <label class="control-label col-sm-2" for="pwd">รูปภาพผู้ใช้ :</label>
                             <div class="col-sm-10">
                               <div class="input-group">
-                                <input type="file" class="form-control" accept="image/*" name="file">
-                                {{-- <span class="input-group-btn">
-                                  <button class="btn btn-secondary" type="button">Go!</button>
-                                </span> --}}
+                                <input type="file" class="filestyle" data-buttonText=" Browse" data-buttonName="btn-primary">
+                                {{-- <input type="file" class="form-control" accept="image/*" name="file"> --}}
+
                               </div>
                               {{-- <input type="file" name="pic" accept="image/*" class="btn btn-primary"> --}}
                               {{-- {!! Form::file('file', ['required' => 'required']) !!} --}}
@@ -131,5 +130,9 @@
 
 @endsection
 @section('footerscript')
-
+<script>
+$('#BSbtninfo').filestyle({
+				buttonName : 'btn-info',
+                buttonText : ' Select a File'
+                </script>
 @endsection
