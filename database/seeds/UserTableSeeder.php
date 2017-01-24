@@ -13,10 +13,10 @@ class UserTableSeeder extends Seeder
     {
         \DB::table('users')->delete();
         User::create([
-          'name'=>'pcbimnon',
-          'email'=>'pcbimon@gmail.com',
+          'name'=>'Test USer',
+          'email'=>'test@gmail.com',
           'password'=>bcrypt('1234'),
-          'path_pic'=>'1/1'
+          'path_pic'=>'img/avatar5.png'
 
         ]);
     }
