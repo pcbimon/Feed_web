@@ -113,11 +113,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::where('id',$id)->first();
         $this->validate($request,[
           'user_name' => 'required',
-          'email'=> 'required|email|unique:users',
+          'email'=> 'required|email|unique:users,email,'.$user->id,
           'password'=>'required',
-          'user_level'=> 'required'
+          // 'user_level'=> 'required'
         ]);
         if ($file = $request->file('file')) {
           $name = $request->email;
@@ -129,7 +130,7 @@ class UserController extends Controller
         else {
           $pathpic = "img/avatar5.png";
         }
-        $user = User::where('id',$id)->first();
+
         $user->name = $request->user_name;
         $user->email = $request->email;
         $user->password = $request->password;
