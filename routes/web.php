@@ -30,6 +30,7 @@ Route::group(['middleware'=>['web']],function(){
 Route::group(['middleware'=>['web','auth']],function(){
   Route::get('/main',['as'=>'main','uses'=>'UserController@main']);
   Route::resource('/muser','UserController');
+  Route::resource('/tuser','TypeUserController');
 });
 
 //simple crud

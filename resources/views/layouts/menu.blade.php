@@ -81,7 +81,17 @@
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i> การวิเคราะห์</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> หัวข้อการวิเคราะห์</a></li>
-          <li><a href="/muser"><i class="fa fa-circle-o"></i> การจัดการผู้ใช้ระบบ</a></li>
+          <li>
+            <a href="#"><i class="fa fa-circle-o"></i> ผู้ใช้ระบบ
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="/muser"><i class="fa fa-circle-o"></i> จัดการข้อมูลผู้ใช้</a></li>
+              <li><a href="/"><i class="fa fa-circle-o"></i> รายงาน 2</a></li>
+            </ul>
+          </li>
           <li>
             <a href="#"><i class="fa fa-circle-o"></i> รายงาน
               <span class="pull-right-container">
