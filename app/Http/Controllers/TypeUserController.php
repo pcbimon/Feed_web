@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
+use App\TypeUser;
 use Illuminate\Http\Request;
 
 class TypeUserController extends Controller
@@ -14,6 +15,11 @@ class TypeUserController extends Controller
     public function index()
     {
         //
+        $typeusers = TypeUser::all();
+        // $typeusers = TypeUser::find(1)->users()->get();
+        // $typeusers = TypeUser::
+        // return $users;
+        return view('main.typeuser.index',compact('typeusers'));
     }
 
     /**
@@ -24,6 +30,7 @@ class TypeUserController extends Controller
     public function create()
     {
         //
+        return view('main.typeuser.create');
     }
 
     /**
@@ -35,6 +42,15 @@ class TypeUserController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+          'typeuser_name' => 'required'
+          // 'user_level'=> 'required'
+        ]);
+        $typeusers = new TypeUser;
+        $typeusers->TypeName = $request->typeuser_name;
+        $typeusers->save();
+        return redirect('tuser');
+
     }
 
     /**
@@ -57,6 +73,9 @@ class TypeUserController extends Controller
     public function edit($id)
     {
         //
+        $typeusers = TypeUser::findOrFail($id);
+        // return $typeusers;
+        return view('main.typeuser.edit',compact('typeusers'));
     }
 
     /**
@@ -69,6 +88,10 @@ class TypeUserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $typeusers = TypeUser::where('id',$id)->first();
+        $typeusers->typename = $request->typeuser_name;
+        $typeusers->save();
+        return redirect('tuser');
     }
 
     /**
@@ -80,5 +103,7 @@ class TypeUserController extends Controller
     public function destroy($id)
     {
         //
+        $typeusers = TypeUser::where('id',$id)->delete();
+        return redirect('tuser');
     }
 }
