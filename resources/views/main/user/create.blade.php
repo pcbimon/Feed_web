@@ -72,9 +72,9 @@
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">ระดับผู้ใช้:</label>
                             <div class="col-sm-10">
-                              <select class="form-control">
+                              <select class="form-control" name="typeuser">
                               @foreach($typeusers as $item)
-                                  <option>{{$item->TypeName}}</option>
+                                  <option value="{{$item->id}}">{{$item->TypeName}}</option>
                       				@endforeach
                             </select>
                             </div>

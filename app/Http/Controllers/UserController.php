@@ -72,6 +72,7 @@ class UserController extends Controller
 
         $user->name = $request->user_name;
         $user->email = $request->email;
+        $user->type_user_id = $request->typeuser;
         $user->password = Hash::make($request->password);
         $user->path_pic = $pathpic;
 
@@ -104,7 +105,8 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        return view('main.user.edit',compact('user'));
+        $typeusers = TypeUser::all();
+        return view('main.user.edit',compact('user','typeusers'));
     }
 
     /**
@@ -136,6 +138,7 @@ class UserController extends Controller
         }
 
         $user->name = $request->user_name;
+        $user->type_user_id = $request->typeuser;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->path_pic = $pathpic;
