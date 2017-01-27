@@ -28,7 +28,7 @@ class SubjectAnalysisController extends Controller
     public function create()
     {
         //
-        
+        return view('main.subject_analys.create');
     }
 
     /**
@@ -40,6 +40,15 @@ class SubjectAnalysisController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+          'subject_name' => 'required',
+          'subject_price' => 'required'
+        ]);
+        $subjectanalys = new SubjectAnalysis;
+        $subjectanalys->name = $request->subject_name;
+        $subjectanalys->price = $request->subject_price;
+        $subjectanalys->save();
+        return redirect('subjectanalys');
     }
 
     /**
@@ -62,6 +71,8 @@ class SubjectAnalysisController extends Controller
     public function edit($id)
     {
         //
+        $subjectanalys = SubjectAnalysis::findOrFail($id);
+        return view('main.subject_analys.edit',compact('subjectanalys'));
     }
 
     /**
@@ -74,6 +85,11 @@ class SubjectAnalysisController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $subjectanalys = SubjectAnalysis::where('id',$id)->first();
+        $subjectanalys->name = $request->subject_name;
+        $subjectanalys->price = $request->subject_price;
+        $subjectanalys->save();
+        return redirect('subjectanalys');
     }
 
     /**
@@ -85,5 +101,7 @@ class SubjectAnalysisController extends Controller
     public function destroy($id)
     {
         //
+        $subjectanalys = SubjectAnalysis::where('id',$id)->delete();
+        return redirect('subjectanalys');
     }
 }
