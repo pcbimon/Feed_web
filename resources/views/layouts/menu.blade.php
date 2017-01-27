@@ -80,7 +80,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i> การวิเคราะห์</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> หัวข้อการวิเคราะห์</a></li>
+          <li><a href="/subjectanalys"><i class="fa fa-circle-o"></i> หัวข้อการวิเคราะห์</a></li>
           <li>
             <a href="#"><i class="fa fa-user"></i> ผู้ใช้ระบบ
               <span class="pull-right-container">

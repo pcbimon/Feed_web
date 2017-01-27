@@ -2,7 +2,7 @@
 
 @extends('layouts.index')
 @section('title')
-  การจัดการประเภทผู้ใช้
+  การจัดการหัวข้อการวิเคราะห์
 @endsection
 @section('content')
 @extends('layouts.menu')
@@ -11,13 +11,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        การจัดการข้อมูลประเภทผู้ใช้
-        <small>Type Users Management</small>
+        การจัดการหัวข้อการวิเคราะห์
+        <small>Subject Analysis Management</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><i class="fa fa-user"></i> ผู้ใช้</li>
-        <li class="active">การจัดการข้อมูลประเภทผู้ใช้</li>
+        <li class="active">การจัดการหัวข้อการวิเคราะห์</li>
       </ol>
     </section>
 
@@ -31,12 +30,12 @@
             <div class="box-header">
               <i class="fa fa-user-circle-o"></i>
 
-              <h3 class="box-title">การจัดการข้อมูลประเภทผู้ใช้</h3>
+              <h3 class="box-title">การจัดการหัวข้อการวิเคราะห์</h3>
 
             </div>
 
             <div class="box-body">
-              <button type="button" class="btn btn-primary btn-lg " name="button" onclick="window.location='{{ url("tuser/create") }}'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> เพิ่มข้อมูลประเภทผู้ใช้ใหม่</button>
+              <button type="button" class="btn btn-primary btn-lg " name="button" onclick="window.location='{{ url("subjectanalys/create") }}'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> เพิ่มข้อมูลหัวข้อการวิเคราะห์ใหม่</button>
               <br/><br/>
               {{-- Content --}}
 
@@ -49,18 +48,20 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>ลำดับประเภทผู้ใช้</th>
-                  <th>ชื่อ</th>
+                  <th>ลำดับ</th>
+                  <th>หัวข้อการวิเคราะห์</th>
+                  <th>ราคา</th>
                   <th>แก้ไข/ลบ</th>
                 </tr>
                 </thead>
                 <tbody>
 
-                  @foreach($typeusers as $item)
+                  @foreach($subjectanalys as $item)
           				<tr class="item{{$item->id}}">
           					<td>{{$item->id}}</td>
-          					<td>{{$item->TypeName}}</td>
-          					<td><button class="btn btn-info" onclick="window.location='{{ url("tuser/$item->id/edit") }}'">
+          					<td>{{$item->name}}</td>
+                    <td>{{$item->price}}</td>
+          					<td><button class="btn btn-info" onclick="window.location='{{ url("subjectanalys/$item->id/edit") }}'">
           							<span class="glyphicon glyphicon-edit"></span> Edit
           						</button>
           						<button class="delete-modal btn btn-danger"
@@ -129,14 +130,7 @@
 
       });
       });
-      $(document).on('click', '.edit-modal', function() {
-          var id = $(this).data('id');
-          $('#fid').val($(this).data('id'));
-          $('#n').val($(this).data('name'));
-          $('#mail').val($(this).data('mail'));
-          $('#UpdateModal').modal('show');
-          document.getElementById("Updateform").action = "/muser/"+id;
-      });
+
       $(document).on('click', '.delete-modal', function() {
 
           var id = $(this).data('id');
@@ -145,7 +139,7 @@
 
           $('.dname').html($(this).data('name'));
           $('#DeleteModal').modal('show');
-          document.getElementById("Deleteform").action = "/tuser/"+id;
+          document.getElementById("Deleteform").action = "/subjectanalys/"+id;
       });
       $(document).on('click', '.create-modal', function() {
           $('#CreateModal').modal('show');

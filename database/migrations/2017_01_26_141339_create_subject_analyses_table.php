@@ -16,6 +16,7 @@ class CreateSubjectAnalysesTable extends Migration
         Schema::create('subject_analyses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('price');
             $table->softDeletes();
             $table->timestamps();
         });

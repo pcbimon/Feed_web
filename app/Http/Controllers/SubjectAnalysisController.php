@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\TypeUser;
+use App\SubjectAnalysis;
 use Illuminate\Http\Request;
 
 class SubjectAnalysisController extends Controller
@@ -15,6 +16,8 @@ class SubjectAnalysisController extends Controller
     public function index()
     {
         //
+        $subjectanalys = SubjectAnalysis::all();
+        return view('main.subject_analys.index',compact('subjectanalys'));
     }
 
     /**
@@ -25,6 +28,7 @@ class SubjectAnalysisController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
