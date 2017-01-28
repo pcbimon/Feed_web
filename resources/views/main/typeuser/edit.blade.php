@@ -59,87 +59,7 @@
                             <input type="text" class="form-control" name="typeuser_name" required="required" value="{{$typeusers->TypeName}}">
                             </div>
                           </div>
-                          <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">ส่วนการดำเนินงาน:</label>
-                            <div class="col-sm-3">
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check" id="checkAll"> Check All
-                                </label>
-                              </div>
 
-                                <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check"> Check me out
-                                </label>
-                              </div>
-
-
-                                <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check"> Check me out
-                                </label>
-                              </div>
-
-                                <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check"> Check me out
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-sm-3">
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check" id="checkAll"> Check All
-                                </label>
-                              </div>
-
-                                <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check"> Check me out
-                                </label>
-                              </div>
-
-
-                                <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check"> Check me out
-                                </label>
-                              </div>
-
-                                <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check"> Check me out
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-sm-3">
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check" id="checkAll"> Check All
-                                </label>
-                              </div>
-
-                                <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check"> Check me out
-                                </label>
-                              </div>
-
-
-                                <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check"> Check me out
-                                </label>
-                              </div>
-
-                                <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" class="check"> Check me out
-                                </label>
-                              </div>
-                            </div>
-                          </div>
 
                           <div class="form-group">
                             {{-- <div class="col-md-3">
@@ -180,9 +100,5 @@
 
 @endsection
 @section('footerscript')
-<script>
-$("#checkAll").click(function () {
-    $(".check").prop('checked', $(this).prop('checked'));
-});
-</script>
+
 @endsection

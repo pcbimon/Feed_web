@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\TypeUser;
+use App\SubjectAnalysis;
 
 class UserController extends Controller
 {
@@ -33,7 +34,8 @@ class UserController extends Controller
     public function create()
     {
         $typeusers = TypeUser::all();
-        return view('main.user.create',compact('typeusers'));
+        $SubjectAnalysis = SubjectAnalysis::all();
+        return view('main.user.create',compact('typeusers','SubjectAnalysis'));
 
     }
 
