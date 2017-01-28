@@ -17,7 +17,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::join('type_users','type_user_id','=','type_users.id')->get();
+        // $users = User::join('type_users','type_user_id','=','type_users.id')->get();
+        $users = User::join('type_users','type_user_id','=','type_users.id')->select('users.*','type_users.TypeName')->get();
         // $typeusers = TypeUser::find(1)->users()->get();
         // $typeusers = TypeUser::
         // return $users;
