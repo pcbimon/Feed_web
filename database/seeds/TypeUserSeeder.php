@@ -16,5 +16,14 @@ class TypeUserSeeder extends Seeder
         TypeUser::create([
           'TypeName'=>'Administator'
         ]);
+        TypeUser::create([
+          'TypeName'=>'Inspector'
+        ]);
+        TypeUser::create([
+          'TypeName'=>'Reception'
+        ]);
+        TypeUser::create([
+          'TypeName'=>'Analys'
+        ]);
     }
 }
