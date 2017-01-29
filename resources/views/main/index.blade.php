@@ -4,8 +4,6 @@
 
 @section('content')
 
-@extends('layouts.menu')
-@extends('layouts.menutop')
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
