@@ -109,7 +109,8 @@ class UserController extends Controller
         //
         $user = User::findOrFail($id);
         $typeusers = TypeUser::all();
-        return view('main.user.edit',compact('user','typeusers'));
+        $SubjectAnalysis = SubjectAnalysis::all();
+        return view('main.user.edit',compact('user','typeusers','SubjectAnalysis'));
     }
 
     /**

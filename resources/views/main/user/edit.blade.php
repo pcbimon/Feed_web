@@ -67,16 +67,6 @@
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="control-label col-sm-2" for="pwd">ระดับผู้ใช้:</label>
-                            <div class="col-sm-10">
-                              <select class="form-control" name="typeuser">
-                              @foreach($typeusers as $item)
-                                  <option value="{{$item->id}}">{{$item->TypeName}}</option>
-                      				@endforeach
-                            </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">รูปภาพผู้ใช้ :</label>
                             <div class="col-sm-10">
                               <div class="input-group">
@@ -90,6 +80,60 @@
                               {{-- {!! Form::file('file', ['required' => 'required']) !!} --}}
                             </div>
                           </div>
+                          <div class="form-group">
+                            <label class="control-label col-sm-2" for="pwd">ระดับผู้ใช้:</label>
+                            <div class="col-sm-10">
+                              <select class="form-control" name="typeuser">
+                              @foreach($typeusers as $item)
+                                  <option value="{{$item->id}}">{{$item->TypeName}}</option>
+                      				@endforeach
+                            </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">ส่วนการดำเนินงาน:</label>
+                            <div class="col-sm-3">
+                              <div class="panel panel-info">
+                                <div class="panel-heading">หน่วยรับตัวอย่าง</div>
+                                <div class="panel-body">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> รับตัวอย่างอาหารสัตว์
+                                    </label>
+                                  </div>
+
+
+                                </div>
+                                </div>
+                              </div>
+
+                              <div class="col-sm-3">
+                                <div class="panel panel-info">
+                                  <div class="panel-heading">หน่วยวิเคราะห์</div>
+                                  <div class="panel-body">
+                                    <select class="selectpicker" multiple data-live-search="true" data-width="75%" data-size="5" data-selected-text-format="count">
+                                      @foreach ($SubjectAnalysis as $item)
+                                        <option value="{{$item->id}}" class="select">{{$item->name}}</option>
+                                      @endforeach
+
+                                    </select>
+                                  </div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-3">
+                                  <div class="panel panel-info">
+                                    <div class="panel-heading">หน่วยตรวจสอบข้อมูล</div>
+                                    <div class="panel-body">
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox" class="check"> ตรวจสอบข้อมูล
+                                        </label>
+                                      </div>
+                                    </div>
+                                    </div>
+                                  </div>
+                          </div>
+
                           <div class="form-group">
                             {{-- <div class="col-md-3">
 
