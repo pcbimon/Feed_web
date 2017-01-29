@@ -1,12 +1,11 @@
-@extends('layouts.main-footer')
+
 
 @extends('layouts.index')
 @section('title')
   การจัดการหัวข้อการวิเคราะห์
 @endsection
 @section('content')
-@extends('layouts.menu')
-  @extends('layouts.menutop')
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
