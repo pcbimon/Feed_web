@@ -19,6 +19,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ URL::asset('dist/css/skins/_all-skins.min.css') }}">
+  <!-- bootstrap-select -->
+  <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-select.css') }}">
 
 
 
@@ -55,7 +57,10 @@
 <script src="{{ URL::asset('dist/js/app.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::asset('dist/js/demo.js') }}"></script>
+<!-- bootstrap-select -->
+<script src="{{ URL::asset('js/bootstrap-select.js') }}"></script>
 
+{{-- File Style --}}
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap-filestyle.min.js') }}"> </script>
 <!-- page script -->
 <!-- page script -->

@@ -84,7 +84,7 @@
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">ระดับผู้ใช้:</label>
                             <div class="col-sm-10">
-                              <select class="form-control" name="typeuser">
+                              <select class="form-control" name="typeuser" id="analys">
                               @foreach($typeusers as $item)
                                   <option value="{{$item->id}}">{{$item->TypeName}}</option>
                       				@endforeach
@@ -100,7 +100,7 @@
                                 <div class="panel-body">
                                   <div class="checkbox">
                                     <label>
-                                      <input type="checkbox" class="check" id="checkAll"> รับตัวอย่างอาหารสัตว์
+                                      <input type="checkbox"> รับตัวอย่างอาหารสัตว์
                                     </label>
                                   </div>
 
@@ -113,23 +113,12 @@
                                 <div class="panel panel-info">
                                   <div class="panel-heading">หน่วยวิเคราะห์</div>
                                   <div class="panel-body">
-                                    @foreach ($SubjectAnalysis as $item)
-                                      <div class="checkbox">
-                                      <label>
-                                        <input type="checkbox" class="check"> {{$item->name}}
-                                      </label>
-                                      </div>
-                                    @endforeach
-                                    <div class="checkbox">
-                                      <label>
-                                        <input type="checkbox" class="check" id="checkAll"> เลือกทั้งหมด
-                                      </label>
-                                    </div>
-
-
-
-
-                                      
+                                    <select class="selectpicker" multiple data-live-search="true" data-width="75%" data-size="5" data-selected-text-format="count">
+                                      @foreach ($SubjectAnalysis as $item)
+                                        <option value="{{$item->id}}" class="select">{{$item->name}}</option>
+                                      @endforeach
+                                      {{-- <option selected>1</option> --}}
+                                    </select>
                                   </div>
                                   </div>
                                 </div>
@@ -139,26 +128,7 @@
                                     <div class="panel-body">
                                       <div class="checkbox">
                                         <label>
-                                          <input type="checkbox" class="check" id="checkAll"> Check All
-                                        </label>
-                                      </div>
-
-                                        <div class="checkbox">
-                                        <label>
-                                          <input type="checkbox" class="check"> Check me out
-                                        </label>
-                                      </div>
-
-
-                                        <div class="checkbox">
-                                        <label>
-                                          <input type="checkbox" class="check"> Check me out
-                                        </label>
-                                      </div>
-
-                                        <div class="checkbox">
-                                        <label>
-                                          <input type="checkbox" class="check"> Check me out
+                                          <input type="checkbox" class="check"> ตรวจสอบข้อมูล
                                         </label>
                                       </div>
                                     </div>
@@ -210,12 +180,20 @@
 @section('footerscript')
 <script>
 $('#BSbtninfo').filestyle({
-				buttonName : 'btn-info',
-                buttonText : ' Select a File'});
+	buttonName : 'btn-info',
+  buttonText : ' Select a File'});
 
-                $("#checkAll").click(function () {
-                    $(".check").prop('checked', $(this).prop('checked'));
-                });
+$("#checkAll").click(function () {
+  $(".check").prop('checked', $(this).prop('checked'));
+});
+$('#select_all').click(function() {
+    $('#analys option').prop('selected', true);
+});
+$('#basic2').selectpicker({
+      liveSearch: true,
+      maxOptions: 1
+    });
+</script>
 
-                </script>
+
 @endsection
