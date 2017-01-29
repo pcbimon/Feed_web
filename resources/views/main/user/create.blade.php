@@ -110,7 +110,7 @@
                                 <div class="panel panel-info">
                                   <div class="panel-heading">หน่วยวิเคราะห์</div>
                                   <div class="panel-body">
-                                    <select class="selectpicker" multiple data-live-search="true" data-width="75%" data-size="5" data-selected-text-format="count">
+                                    <select class="selectpicker" name="anayls_topic[]" multiple data-live-search="true" data-width="75%" data-size="5" data-selected-text-format="count">
                                       @foreach ($SubjectAnalysis as $item)
                                         <option value="{{$item->id}}" class="select">{{$item->name}}</option>
                                       @endforeach

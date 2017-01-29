@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\TypeUser;
 use App\SubjectAnalysis;
+use App\SectionUser;
 
 class UserController extends Controller
 {
@@ -53,12 +54,8 @@ class UserController extends Controller
           'user_name' => 'required',
           'email'=> 'required|email|unique:users',
           'password'=>'required',
-          // 'user_level'=> 'required'
         ]);
         $pic = "";
-        // // return redirect('muser');
-        // // return $request->all();
-        // $input = $request->all();
         $user = new User;
         if ($file = $request->file('file')) {
           $name = $request->email;
@@ -70,9 +67,6 @@ class UserController extends Controller
         else {
           $pathpic = "img/avatar5.png";
         }
-
-        // return $pathpic;
-
         $user->name = $request->user_name;
         $user->email = $request->email;
         $user->type_user_id = $request->typeuser;
@@ -80,7 +74,19 @@ class UserController extends Controller
         $user->path_pic = $pathpic;
 
         $user->save();
+        $lastID = User::latest()->first();
+        $number_topic = count($request->anayls_topic);
+
+        for ($i=0; $i < $number_topic; $i++) {
+          $section_user = new SectionUser;
+          $section_user->iduser = $lastID->id;
+          $section_user->idsubject = $request->anayls_topic[$i];
+          $section_user->save();
+        }
+
+        // return $lastID->id;
         return redirect('muser');
+
 
 
         // return $pic;
