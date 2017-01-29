@@ -14,13 +14,10 @@ use App\User;
 Route::get('/', function () {
     return view('indexfirst');
 });
-// Route::get('/main', function () {
-//     return view('main.index');
-// });
-// Route::get('/login', function () {
-//     return view('login');
-// });
-// Route::resource('users','UserController');
+Route::get('/admin/user/role',['middleware'=>['role','web','auth'],function()
+{
+  return "Role Middleware";
+}]);
 Route::get('/checkuser', 'LoginController@checkuser');
 Route::group(['middleware'=>['web']],function(){
   Route::get('/login',['as'=>'login','uses'=>'AuthController@login']);
