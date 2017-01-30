@@ -12,4 +12,8 @@ class SubjectAnalysis extends Model
     protected $fillable = [
         'name'
     ];
+    public function section()
+    {
+      return $this->belongsTo('App\SectionUser');
+    }
 }
