@@ -158,9 +158,20 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->path_pic = $pathpic;
         $user->save();
-        // $post->update($request->all());
+        // update Subject Analysis
+        $getID = $user->id;
+        $number_topic = count($request->anayls_topic);
+        // Delete old section
+        SectionUser::where('iduser', $getID)->delete();
+        // Add new Section
+        for ($i=0; $i < $number_topic; $i++) {
+          $section_user = new SectionUser;
+          $section_user->iduser = $getID;
+          $section_user->idsubject = $request->anayls_topic[$i];
+          $section_user->save();
+        }
+
         return redirect('muser');
-        // return $request->all();
     }
 
     /**
