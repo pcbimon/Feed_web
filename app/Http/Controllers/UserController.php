@@ -114,9 +114,14 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($id);
+        $sectionuser = SectionUser::select('iduser','idsubject')->where('iduser', '=', $id)->get();
         $typeusers = TypeUser::all();
         $SubjectAnalysis = SubjectAnalysis::all();
-        return view('main.user.edit',compact('user','typeusers','SubjectAnalysis'));
+        // foreach ($sectionuser as $user) {
+        //     echo $user->idsubject[0];
+        // }
+        // return $sectionuser;
+        return view('main.user.edit',compact('user','typeusers','SubjectAnalysis','sectionuser'));
     }
 
     /**

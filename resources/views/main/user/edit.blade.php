@@ -3,7 +3,19 @@
   การจัดการผู้ใช้
 @endsection
 @section('content')
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+  function check() {
+    var data = document.getElementById('typeuser').value;
+    // alert(data);
+      if (data==4) {
+        $("#panel").slideDown("slow");
+      }
+      else{
+        $("#panel").slideUp("slow");
+      }
+    };
+  </script>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -83,57 +95,42 @@
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">ระดับผู้ใช้:</label>
                             <div class="col-sm-10">
-                              <select class="form-control" name="typeuser">
+                              {{-- {{$user->type_user_id}} --}}
+                              <select class="form-control" id="typeuser" name="typeuser" onchange="check()">
                               @foreach($typeusers as $item)
+                                @if ($user->type_user_id == $item->id)
+                                  <option value="{{$item->id}}" selected>{{$item->TypeName}}</option>
+                                @else
                                   <option value="{{$item->id}}">{{$item->TypeName}}</option>
+                                @endif
+
                       				@endforeach
                             </select>
                             </div>
                           </div>
+                          <div id="panel">
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="email">ส่วนการดำเนินงาน:</label>
-                            <div class="col-sm-3">
-                              <div class="panel panel-info">
-                                <div class="panel-heading">หน่วยรับตัวอย่าง</div>
-                                <div class="panel-body">
-                                  <div class="checkbox">
-                                    <label>
-                                      <input type="checkbox"> รับตัวอย่างอาหารสัตว์
-                                    </label>
-                                  </div>
-
-
-                                </div>
-                                </div>
-                              </div>
-
                               <div class="col-sm-3">
                                 <div class="panel panel-info">
                                   <div class="panel-heading">หน่วยวิเคราะห์</div>
                                   <div class="panel-body">
-                                    <select class="selectpicker" multiple data-live-search="true" data-width="75%" data-size="5" data-selected-text-format="count">
+                                    <select class="selectpicker" name="anayls_topic[]" multiple data-live-search="true" data-width="75%" data-size="5" data-selected-text-format="count">
                                       @foreach ($SubjectAnalysis as $item)
-                                        <option value="{{$item->id}}" class="select">{{$item->name}}</option>
+
+                                            <option value="{{$item->id}}" class="select"@for ($i = 0; $i < count($sectionuser); $i++) @if($sectionuser[$i]->idsubject == $item->id) {{ "selected" }} @break @endif @endfor>{{$item->name}}</option>
+
+
                                       @endforeach
+
 
                                     </select>
                                   </div>
                                   </div>
                                 </div>
-                                <div class="col-sm-3">
-                                  <div class="panel panel-info">
-                                    <div class="panel-heading">หน่วยตรวจสอบข้อมูล</div>
-                                    <div class="panel-body">
-                                      <div class="checkbox">
-                                        <label>
-                                          <input type="checkbox" class="check"> ตรวจสอบข้อมูล
-                                        </label>
-                                      </div>
-                                    </div>
-                                    </div>
-                                  </div>
-                          </div>
 
+                          </div>
+                          </div>
                           <div class="form-group">
                             {{-- <div class="col-md-3">
 
