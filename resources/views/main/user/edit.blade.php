@@ -5,6 +5,15 @@
 @section('content')
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script>
+  $( document ).ready(function() {
+    var getdata = document.getElementById('typeuser').value;
+    // alert(getdata);
+    if(getdata == 4)
+    $("#panel").slideDown("slow");
+    else {
+    $("#panel").hide();
+    }
+  });
   function check() {
     var data = document.getElementById('typeuser').value;
     // alert(data);
@@ -82,7 +91,10 @@
                             <label class="control-label col-sm-2" for="pwd">รูปภาพผู้ใช้ :</label>
                             <div class="col-sm-10">
                               <div class="input-group">
-                                <input type="file" class="filestyle" data-buttonText=" Browse" data-buttonName="btn-primary">
+                                <img src="{{ URL::asset($user->path_pic) }}" alt="" width="200px" height="200px">
+                                <br>
+                                <br>
+                                <input name="file" type="file" class="filestyle" data-buttonText=" Browse" data-buttonName="btn-primary" accept="image/*">
                                 {{-- <input type="file" class="form-control" accept="image/*" name="file" value="{{$user->path_pic}}"> --}}
                                 {{-- <span class="input-group-btn">
                                   <button class="btn btn-secondary" type="button">Go!</button>

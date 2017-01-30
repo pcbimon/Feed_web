@@ -70,7 +70,7 @@
                             <label class="control-label col-sm-2" for="pwd">รูปภาพผู้ใช้ :</label>
                             <div class="col-sm-10">
                               <div class="input-group">
-                                <input type="file" class="filestyle" data-buttonText=" Browse" data-buttonName="btn-primary">
+                                <input name="file" type="file" class="filestyle" data-buttonText=" Browse" data-buttonName="btn-primary">
                                 {{-- <input type="file" class="form-control" accept="image/*" name="file"> --}}
 
                               </div>

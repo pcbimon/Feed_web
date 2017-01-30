@@ -143,7 +143,6 @@ class UserController extends Controller
         ]);
         if ($file = $request->file('file')) {
           $name = $request->email;
-          // $name = $request->user_email;
           $file->move('img/user',$name);
           $input['path']=$name;//file <--name of column
           $pathpic = 'img/user/'.$input['path'];
@@ -172,6 +171,7 @@ class UserController extends Controller
         }
 
         return redirect('muser');
+        // return $request->all();
     }
 
     /**
