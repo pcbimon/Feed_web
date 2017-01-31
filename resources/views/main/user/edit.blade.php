@@ -53,8 +53,12 @@
             </div>
 
             <div class="box-body">
+                {!! Form::model($user,(['method'=>'PUT','action'=>['UserController@update',$user->id],'files'=>true,'class'=>'form-horizontal'])) !!}
 
-                <form class="form-horizontal" action="/muser/{{$user->id}}" method="post" >
+
+
+
+                {{-- <form class="form-horizontal" action="/muser/{{$user->id}}" method="post" File="true" > --}}
                 {{-- {!! Form::open($user,['method'=>'PUT','action'=>['UserController@update',$user->id],'files'=>true,'class'=>'form-horizontal']) !!} --}}
                 {{-- <form class="form-horizontal" role="form" action="/muser" method="post"> --}}
                   {{-- {{ csrf_field() }} --}}
@@ -84,7 +88,7 @@
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">รหัสผ่านใหม่:</label>
                             <div class="col-sm-10">
-                            <input type="password" class="form-control" name="password" >
+                            <input type="password" class="form-control" name="password"  required="required">
                             </div>
                           </div>
                           <div class="form-group">
@@ -95,10 +99,7 @@
                                 <br>
                                 <br>
                                 <input name="file" type="file" class="filestyle" data-buttonText=" Browse" data-buttonName="btn-primary" accept="image/*">
-                                {{-- <input type="file" class="form-control" accept="image/*" name="file" value="{{$user->path_pic}}"> --}}
-                                {{-- <span class="input-group-btn">
-                                  <button class="btn btn-secondary" type="button">Go!</button>
-                                </span> --}}
+
                               </div>
                               {{-- <input type="file" name="pic" accept="image/*" class="btn btn-primary"> --}}
                               {{-- {!! Form::file('file', ['required' => 'required']) !!} --}}

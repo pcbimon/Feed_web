@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use File;
 use App\User;
 use App\TypeUser;
 use App\SubjectAnalysis;
@@ -55,11 +57,9 @@ class UserController extends Controller
           'email'=> 'required|email|unique:users',
           'password'=>'required',
         ]);
-        $pic = "";
         $user = new User;
         if ($file = $request->file('file')) {
-          $name = $request->email;
-          // $name = $request->user_email;
+          $name = $request->email.".".$file->getClientOriginalExtension();
           $file->move('img/user',$name);
           $input['path']=$name;//file <--name of column
           $pathpic = 'img/user/'.$input['path'];
@@ -142,7 +142,7 @@ class UserController extends Controller
           // 'user_level'=> 'required'
         ]);
         if ($file = $request->file('file')) {
-          $name = $request->email;
+          $name = $request->email.$file->getClientOriginalExtension();
           $file->move('img/user',$name);
           $input['path']=$name;//file <--name of column
           $pathpic = 'img/user/'.$input['path'];
@@ -183,8 +183,14 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        // Delete Data User
         $user = User::where('id',$id)->delete();
-        return redirect('muser');
+        // Delete Pic Uploaded
+        $userpic = User::where('id',$id)->first();
+        if ($userpic->path_pic != 'img/avatar5.png') {
+          File::delete($userpic->path_pic);
+        }
+
     }
     public function main()
     {

@@ -3,6 +3,7 @@
   การจัดการผู้ใช้
 @endsection
 @section('content')
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -63,14 +64,14 @@
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">รหัสผ่าน:</label>
                             <div class="col-sm-10">
-                            <input type="password" class="form-control" name="password">
+                            <input type="password" class="form-control" name="password" required="required">
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">รูปภาพผู้ใช้ :</label>
                             <div class="col-sm-10">
                               <div class="input-group">
-                                <input name="file" type="file" class="filestyle" data-buttonText=" Browse" data-buttonName="btn-primary">
+                                <input name="file" type="file" class="filestyle" data-buttonText=" Browse" data-buttonName="btn-primary" accept="image/*">
                                 {{-- <input type="file" class="form-control" accept="image/*" name="file"> --}}
 
                               </div>
@@ -81,7 +82,7 @@
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">ระดับผู้ใช้:</label>
                             <div class="col-sm-10">
-                              <select class="form-control" name="typeuser" id="analys">
+                              <select class="form-control" name="typeuser" id="typeuser" onchange="check()">
                               @foreach($typeusers as $item)
                                   <option value="{{$item->id}}">{{$item->TypeName}}</option>
                       				@endforeach
@@ -89,48 +90,28 @@
                             </div>
                           </div>
 
+                          <div id="panel">
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="email">ส่วนการดำเนินงาน:</label>
-                            <div class="col-sm-3">
-                              <div class="panel panel-info">
-                                <div class="panel-heading">หน่วยรับตัวอย่าง</div>
-                                <div class="panel-body">
-                                  <div class="checkbox">
-                                    <label>
-                                      <input type="checkbox"> รับตัวอย่างอาหารสัตว์
-                                    </label>
-                                  </div>
-
-
-                                </div>
-                                </div>
-                              </div>
-
                               <div class="col-sm-3">
                                 <div class="panel panel-info">
                                   <div class="panel-heading">หน่วยวิเคราะห์</div>
                                   <div class="panel-body">
                                     <select class="selectpicker" name="anayls_topic[]" multiple data-live-search="true" data-width="75%" data-size="5" data-selected-text-format="count">
                                       @foreach ($SubjectAnalysis as $item)
-                                        <option value="{{$item->id}}" class="select">{{$item->name}}</option>
+
+                                            <option value="{{$item->id}}" class="select">{{$item->name}}</option>
+
+
                                       @endforeach
-                                      {{-- <option selected>1</option> --}}
+
+
                                     </select>
                                   </div>
                                   </div>
                                 </div>
-                                <div class="col-sm-3">
-                                  <div class="panel panel-info">
-                                    <div class="panel-heading">หน่วยตรวจสอบข้อมูล</div>
-                                    <div class="panel-body">
-                                      <div class="checkbox">
-                                        <label>
-                                          <input type="checkbox" class="check"> ตรวจสอบข้อมูล
-                                        </label>
-                                      </div>
-                                    </div>
-                                    </div>
-                                  </div>
+
+                          </div>
                           </div>
 
                           <div class="form-group">
@@ -191,6 +172,25 @@ $('#basic2').selectpicker({
       maxOptions: 1
     });
 </script>
-
+<script>
+$( document ).ready(function() {
+  var getdata = document.getElementById('typeuser').value;
+  if(getdata == 4)
+  $("#panel").slideDown("slow");
+  else {
+  $("#panel").hide();
+  }
+});
+function check() {
+  var data = document.getElementById('typeuser').value;
+  // alert(data);
+    if (data==4) {
+      $("#panel").slideDown("slow");
+    }
+    else{
+      $("#panel").slideUp("slow");
+    }
+  };
+</script>
 
 @endsection
