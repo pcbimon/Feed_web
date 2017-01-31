@@ -74,15 +74,18 @@ class UserController extends Controller
         $user->path_pic = $pathpic;
 
         $user->save();
-        $lastID = User::latest()->first();
-        $number_topic = count($request->anayls_topic);
+        if ($request->typeuser != "4") {
+          $lastID = User::latest()->first();
+          $number_topic = count($request->anayls_topic);
 
-        for ($i=0; $i < $number_topic; $i++) {
-          $section_user = new SectionUser;
-          $section_user->iduser = $lastID->id;
-          $section_user->idsubject = $request->anayls_topic[$i];
-          $section_user->save();
+          for ($i=0; $i < $number_topic; $i++) {
+            $section_user = new SectionUser;
+            $section_user->iduser = $lastID->id;
+            $section_user->idsubject = $request->anayls_topic[$i];
+            $section_user->save();
+          }
         }
+
 
         // return $lastID->id;
         return redirect('muser');
@@ -158,17 +161,20 @@ class UserController extends Controller
         $user->path_pic = $pathpic;
         $user->save();
         // update Subject Analysis
-        $getID = $user->id;
-        $number_topic = count($request->anayls_topic);
-        // Delete old section
-        SectionUser::where('iduser', $getID)->delete();
-        // Add new Section
-        for ($i=0; $i < $number_topic; $i++) {
-          $section_user = new SectionUser;
-          $section_user->iduser = $getID;
-          $section_user->idsubject = $request->anayls_topic[$i];
-          $section_user->save();
+        if ($request->typeuser != "4") {
+          $getID = $user->id;
+          $number_topic = count($request->anayls_topic);
+          // Delete old section
+          SectionUser::where('iduser', $getID)->delete();
+          // Add new Section
+          for ($i=0; $i < $number_topic; $i++) {
+            $section_user = new SectionUser;
+            $section_user->iduser = $getID;
+            $section_user->idsubject = $request->anayls_topic[$i];
+            $section_user->save();
+          }
         }
+
 
         return redirect('muser');
         // return $request->all();
