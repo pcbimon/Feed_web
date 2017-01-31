@@ -148,7 +148,7 @@
                             {{-- <div class="col-md-3">
 
                             </div> --}}
-                            <div class="col-md-3 col-md-offset-2">
+                            <div class="col-md-10 col-md-offset-2">
                               <button type="submit" class="btn btn-primary">
                                 <span class='glyphicon glyphicon glyphicon-ok'></span> Update User
                               </button>

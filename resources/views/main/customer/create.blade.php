@@ -1,10 +1,16 @@
 @extends('layouts.index')
 @section('title')
-  การจัดการผู้ใช้
+  การจัดการผู้ใช้บริการ
 @endsection
 @section('content')
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+  <script>
+  $( document ).ready(function() {
+    // add class active
+    $("#analys").addClass('active');
+    $("#customer").addClass('active');
+  });
+  </script>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -35,7 +41,7 @@
             <div class="box-body">
 
 
-                {!! Form::open(['method'=>'POST','action'=>'UserController@store','files'=>true,'class'=>'form-horizontal']) !!}
+                {!! Form::open(['method'=>'POST','action'=>'CustomerController@store','files'=>true,'class'=>'form-horizontal']) !!}
                 {{-- <form class="form-horizontal" role="form" action="/muser" method="post"> --}}
                   {{-- {{ csrf_field() }} --}}
                   <input type="hidden" name="_token" value="{!! csrf_token() !!}">
@@ -52,100 +58,54 @@
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="email">ชื่อ:</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" name="user_name" required="required">
+                            <input type="text" class="form-control" name="name" required="required">
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">Email:</label>
                             <div class="col-sm-10">
-                            <input type="email" class="form-control" name="email" required="required|email|unique:users,email">
+                            <input type="email" class="form-control" name="email" required="required|email">
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="control-label col-sm-2" for="pwd">รหัสผ่าน:</label>
+                            <label class="control-label col-sm-2" for="pwd">ที่อยู่</label>
                             <div class="col-sm-10">
-                            <input type="password" class="form-control" name="password" required="required">
-                            </div>
+                            <textarea class="form-control" rows="5" name="address"></textarea>
+                          </div>
                           </div>
                           <div class="form-group">
-                            <label class="control-label col-sm-2" for="pwd">รูปภาพผู้ใช้ :</label>
-                            <div class="col-sm-3">
+                            <label class="control-label col-sm-2" for="pwd">รูปภาพ :</label>
+                            <div class="col-sm-10">
                               <div class="input-group">
                                 <input name="file" type="file" class="filestyle" data-buttonText=" Browse" data-buttonName="btn-primary" accept="image/*">
-
                               </div>
-
-
-                            </div>
-                            <div class="col-sm-3">
-                              <div class="input-group">
-                              <button class="btn btn-primary" name="button" data-toggle="modal" data-target="#CameraModal"><i class="fa fa-camera" aria-hidden="true"></i> Camera</button>
-                              <!-- Modal -->
-                              <div class="modal fade" id="CameraModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                      <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
-                            </div>
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="control-label col-sm-2" for="pwd">ระดับผู้ใช้:</label>
+                            <label class="control-label col-sm-2" for="email">เบอร์โทรศัพท์:</label>
                             <div class="col-sm-10">
-                              <select class="form-control" name="typeuser" id="typeuser" onchange="check()">
-                              @foreach($typeusers as $item)
-                                  <option value="{{$item->id}}">{{$item->TypeName}}</option>
-                      				@endforeach
-                            </select>
+                            <input type="text" class="form-control" name="telephone" required="required">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">เบอร์แฟกซ์:</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" name="fax" required="required">
                             </div>
                           </div>
 
-                          <div id="panel">
-                          <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">ส่วนการดำเนินงาน:</label>
-                              <div class="col-sm-3">
-                                <div class="panel panel-info">
-                                  <div class="panel-heading">หน่วยวิเคราะห์</div>
-                                  <div class="panel-body">
-                                    <select class="selectpicker" name="anayls_topic[]" multiple data-live-search="true" data-width="75%" data-size="5" data-selected-text-format="count">
-                                      @foreach ($SubjectAnalysis as $item)
-
-                                            <option value="{{$item->id}}" class="select">{{$item->name}}</option>
 
 
-                                      @endforeach
-
-
-                                    </select>
-                                  </div>
-                                  </div>
-                                </div>
-
-                          </div>
-                          </div>
 
                           <div class="form-group">
                             {{-- <div class="col-md-3">
 
                             </div> --}}
-                            <div class="col-md-3 col-md-offset-2">
+                            <div class="col-md-10 col-md-offset-2">
                               <button type="submit" class="btn btn-primary">
-                                <span class='glyphicon glyphicon glyphicon-ok'></span> Create User
+                                <span class='glyphicon glyphicon glyphicon-ok'></span> Create Customer
                               </button>
-                              <button type="button" class="btn btn-danger" onclick="window.location='{{ url("muser") }}'">
+                              <button type="button" class="btn btn-danger" onclick="window.location='{{ url("customer") }}'">
                                 <span class='glyphicon glyphicon-remove'></span> Cancle
                               </button>
                             </div>

@@ -120,10 +120,6 @@ class UserController extends Controller
         $sectionuser = SectionUser::select('iduser','idsubject')->where('iduser', '=', $id)->get();
         $typeusers = TypeUser::all();
         $SubjectAnalysis = SubjectAnalysis::all();
-        // foreach ($sectionuser as $user) {
-        //     echo $user->idsubject[0];
-        // }
-        // return $sectionuser;
         return view('main.user.edit',compact('user','typeusers','SubjectAnalysis','sectionuser'));
     }
 
@@ -151,7 +147,7 @@ class UserController extends Controller
           $pathpic = 'img/user/'.$input['path'];
         }
         else {
-          $pathpic = "img/avatar5.png";
+          $pathpic = $user->path_pic;
         }
 
         $user->name = $request->user_name;
@@ -196,6 +192,7 @@ class UserController extends Controller
         if ($userpic->path_pic != 'img/avatar5.png') {
           File::delete($userpic->path_pic);
         }
+        return redirect('muser');
 
     }
     public function main()

@@ -29,6 +29,7 @@ Route::group(['middleware'=>['web','auth']],function(){
   Route::resource('/muser','UserController');
   Route::resource('/tuser','TypeUserController');
   Route::resource('/subjectanalys','SubjectAnalysisController');
+  Route::resource('/customer','CustomerController');
 });
 
 //simple crud

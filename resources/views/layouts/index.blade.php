@@ -315,7 +315,7 @@
           </a>
 
         </li>
-        <li class="treeview">
+        <li class="treeview" id="analys">
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>หน่วยรับตัวอย่างอาหารสัตว์</span>
@@ -325,7 +325,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-circle-o"></i> การรับตัวอย่างอาหารสัตว์</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> ข้อมูลลูกค้า</a></li>
+            <li id="customer"><a href="/customer"><i class="fa fa-circle-o"></i> ข้อมูลลูกค้า</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> ข้อมูลอาหารสัตว์</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> ข้อมูลหัวข้อการวิเคราะห์</a></li>
           </ul>
