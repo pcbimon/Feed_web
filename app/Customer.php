@@ -16,4 +16,7 @@ class Customer extends Model
     * @var array
     */
    protected $dates = ['deleted_at'];
+   protected $fillable = [
+       'name','address','email','fax','telephone','path_pic'
+   ];
 }

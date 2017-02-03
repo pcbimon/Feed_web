@@ -30,6 +30,7 @@ Route::group(['middleware'=>['web','auth']],function(){
   Route::resource('/tuser','TypeUserController');
   Route::resource('/subjectanalys','SubjectAnalysisController');
   Route::resource('/customer','CustomerController');
+  Route::resource('/product','ProductController');
 });
 
 //simple crud
