@@ -310,7 +310,7 @@
           <a href="\main">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              {{-- <i class="fa fa-angle-left pull-right"></i> --}}
             </span>
           </a>
 
