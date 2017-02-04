@@ -315,77 +315,161 @@
           </a>
 
         </li>
-        <li class="treeview" id="analys">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>หน่วยรับตัวอย่างอาหารสัตว์</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> การรับตัวอย่างอาหารสัตว์</a></li>
-            <li id="customer"><a href="/customer"><i class="fa fa-circle-o"></i> ข้อมูลลูกค้า</a></li>
-            <li id="product"><a href="/product"><i class="fa fa-circle-o"></i> ข้อมูลอาหารสัตว์</a></li>
-            <li><a href="/viewsubject"><i class="fa fa-circle-o"></i> ข้อมูลหัวข้อการวิเคราะห์</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>หน่วยการวิเคราะห์</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i><span class="pull-right-container">
-              <small class="label pull-right bg-green">4</small>
-            </span> งานวันนี้</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i><span class="pull-right-container">
-              <small class="label pull-right bg-blue">3</small>
-            </span> งานที่เสร็จแล้ว</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i><span class="pull-right-container">
-              <small class="label pull-right bg-red">1</small>
-            </span> งานถูกแก้ไข</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>หน่วยตรวจสอบข้อมูล</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> การวิเคราะห์</a></li>
-            <li><a href="/subjectanalys"><i class="fa fa-calculator"></i> หัวข้อการวิเคราะห์</a></li>
-            <li>
-              <a href="#"><i class="fa fa-user"></i> ผู้ใช้ระบบ
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="/muser"><i class="fa fa-circle-o"></i> จัดการข้อมูลผู้ใช้</a></li>
-                <li><a href="/tuser"><i class="fa fa-circle-o"></i> ประเภทผู้ใช้</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-circle-o"></i> รายงาน
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> รายงาน 1</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> รายงาน 2</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> รายงาน 3</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
+
+        @if (\Auth::user()->type_user_id == '1')
+          <li class="treeview" id="analys">
+            <a href="#">
+              <i class="fa fa-files-o"></i>
+              <span>หน่วยรับตัวอย่างอาหารสัตว์</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o"></i> การรับตัวอย่างอาหารสัตว์</a></li>
+              <li id="customer"><a href="/customer"><i class="fa fa-circle-o"></i> ข้อมูลลูกค้า</a></li>
+              <li id="product"><a href="/product"><i class="fa fa-circle-o"></i> ข้อมูลอาหารสัตว์</a></li>
+              <li><a href="/viewsubject"><i class="fa fa-circle-o"></i> ข้อมูลหัวข้อการวิเคราะห์</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-files-o"></i>
+              <span>หน่วยการวิเคราะห์</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o"></i><span class="pull-right-container">
+                <small class="label pull-right bg-green">4</small>
+              </span> งานวันนี้</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i><span class="pull-right-container">
+                <small class="label pull-right bg-blue">3</small>
+              </span> งานที่เสร็จแล้ว</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i><span class="pull-right-container">
+                <small class="label pull-right bg-red">1</small>
+              </span> งานถูกแก้ไข</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-files-o"></i>
+              <span>หน่วยตรวจสอบข้อมูล</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o"></i> การวิเคราะห์</a></li>
+              <li><a href="/subjectanalys"><i class="fa fa-calculator"></i> หัวข้อการวิเคราะห์</a></li>
+              <li>
+                <a href="#"><i class="fa fa-user"></i> ผู้ใช้ระบบ
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="/muser"><i class="fa fa-circle-o"></i> จัดการข้อมูลผู้ใช้</a></li>
+                  <li><a href="/tuser"><i class="fa fa-circle-o"></i> ประเภทผู้ใช้</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-circle-o"></i> รายงาน
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="#"><i class="fa fa-circle-o"></i> รายงาน 1</a></li>
+                  <li><a href="#"><i class="fa fa-circle-o"></i> รายงาน 2</a></li>
+                  <li><a href="#"><i class="fa fa-circle-o"></i> รายงาน 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        @endif
+        @if (\Auth::user()->type_user_id == '2')
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-files-o"></i>
+              <span>หน่วยตรวจสอบข้อมูล</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o"></i> การวิเคราะห์</a></li>
+              <li><a href="/subjectanalys"><i class="fa fa-calculator"></i> หัวข้อการวิเคราะห์</a></li>
+              <li>
+                <a href="#"><i class="fa fa-user"></i> ผู้ใช้ระบบ
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="/muser"><i class="fa fa-circle-o"></i> จัดการข้อมูลผู้ใช้</a></li>
+                  <li><a href="/tuser"><i class="fa fa-circle-o"></i> ประเภทผู้ใช้</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-circle-o"></i> รายงาน
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="#"><i class="fa fa-circle-o"></i> รายงาน 1</a></li>
+                  <li><a href="#"><i class="fa fa-circle-o"></i> รายงาน 2</a></li>
+                  <li><a href="#"><i class="fa fa-circle-o"></i> รายงาน 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        @endif
+        @if (\Auth::user()->type_user_id == '3')
+          <li class="treeview" id="analys">
+            <a href="#">
+              <i class="fa fa-files-o"></i>
+              <span>หน่วยรับตัวอย่างอาหารสัตว์</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o"></i> การรับตัวอย่างอาหารสัตว์</a></li>
+              <li id="customer"><a href="/customer"><i class="fa fa-circle-o"></i> ข้อมูลลูกค้า</a></li>
+              <li id="product"><a href="/product"><i class="fa fa-circle-o"></i> ข้อมูลอาหารสัตว์</a></li>
+              <li><a href="/viewsubject"><i class="fa fa-circle-o"></i> ข้อมูลหัวข้อการวิเคราะห์</a></li>
+            </ul>
+          </li>
+
+        @endif
+        @if (\Auth::user()->type_user_id == '4')
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-files-o"></i>
+              <span>หน่วยการวิเคราะห์</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o"></i><span class="pull-right-container">
+                <small class="label pull-right bg-green">4</small>
+              </span> งานวันนี้</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i><span class="pull-right-container">
+                <small class="label pull-right bg-blue">3</small>
+              </span> งานที่เสร็จแล้ว</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i><span class="pull-right-container">
+                <small class="label pull-right bg-red">1</small>
+              </span> งานถูกแก้ไข</a></li>
+            </ul>
+          </li>
+
+        @endif
+
 
       </ul>
     </section>
