@@ -104,4 +104,9 @@ class SubjectAnalysisController extends Controller
         $subjectanalys = SubjectAnalysis::where('id',$id)->delete();
         return redirect('subjectanalys');
     }
+    public function ViewOnly()
+    {
+      $subjectanalys = SubjectAnalysis::all();
+      return view('main.subject_analys.view',compact('subjectanalys'));
+    }
 }

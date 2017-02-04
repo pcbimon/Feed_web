@@ -327,7 +327,7 @@
             <li><a href="#"><i class="fa fa-circle-o"></i> การรับตัวอย่างอาหารสัตว์</a></li>
             <li id="customer"><a href="/customer"><i class="fa fa-circle-o"></i> ข้อมูลลูกค้า</a></li>
             <li id="product"><a href="/product"><i class="fa fa-circle-o"></i> ข้อมูลอาหารสัตว์</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> ข้อมูลหัวข้อการวิเคราะห์</a></li>
+            <li><a href="/viewsubject"><i class="fa fa-circle-o"></i> ข้อมูลหัวข้อการวิเคราะห์</a></li>
           </ul>
         </li>
         <li class="treeview">

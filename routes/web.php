@@ -29,6 +29,7 @@ Route::group(['middleware'=>['web','auth']],function(){
   Route::resource('/muser','UserController');
   Route::resource('/tuser','TypeUserController');
   Route::resource('/subjectanalys','SubjectAnalysisController');
+  Route::get('/viewsubject',array('as'=>'ViewOnly','uses'=>'SubjectAnalysisController@ViewOnly'));
   Route::resource('/customer','CustomerController');
   Route::resource('/product','ProductController');
 });
