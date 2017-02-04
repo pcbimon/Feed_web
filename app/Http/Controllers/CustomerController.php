@@ -135,6 +135,11 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         $customer = Customer::where('id', $id)->delete();
+        // Delete Pic Uploaded
+        $customerpic = Customer::where('id',$id)->first();
+        if ($customerpic->path_pic != 'img/avatar5.png') {
+          File::delete($customerpic->path_pic);
+        }
         return redirect('customer');
     }
 }
