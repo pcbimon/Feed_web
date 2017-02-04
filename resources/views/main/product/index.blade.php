@@ -1,6 +1,6 @@
 @extends('layouts.index')
 @section('title')
-  การจัดการผู้ใช้บริการ
+  การจัดการตัวอย่างการวิเคราะห์
 @endsection
 @section('content')
 
@@ -33,13 +33,13 @@
             </div>
 
             <div class="box-body">
-              <button type="button" class="btn btn-primary btn-lg " name="button" onclick="window.location='{{ url("customer/create") }}'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> เพิ่มข้อมูลผู้ใช้บริการใหม่</button>
+              <button type="button" class="btn btn-primary btn-lg " name="button" onclick="window.location='{{ url("product/create") }}'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> เพิ่มข้อมูลผู้ใช้บริการใหม่</button>
               <br/><br/>
 
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>รหัสลูกค้า</th>
+                  <th>รหัสตัวอย่าง</th>
                   <th>ชื่อ</th>
                   <th>จำนวน</th>
                   <th>เครื่องหมายระบุ</th>
@@ -137,7 +137,7 @@
 
           $('.dname').html($(this).data('name'));
           $('#DeleteModal').modal('show');
-          document.getElementById("Deleteform").action = "/customer/"+id;
+          document.getElementById("Deleteform").action = "/product/"+id;
       });
 
   </script>

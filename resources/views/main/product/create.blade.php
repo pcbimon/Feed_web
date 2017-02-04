@@ -60,16 +60,28 @@
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="control-label col-sm-2" for="pwd">Email:</label>
+                            <label class="control-label col-sm-2" for="pwd">จำนวน:</label>
                             <div class="col-sm-10">
-                            <input type="email" class="form-control" name="email" required="required|email">
+                            <input type="number" class="form-control" name="countable" required="required">
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="control-label col-sm-2" for="pwd">ที่อยู่</label>
+                            <label class="control-label col-sm-2" for="pwd">แหล่งจัดซื้อ :</label>
                             <div class="col-sm-10">
-                            <textarea class="form-control" rows="5" name="address"></textarea>
+                            <textarea class="form-control" rows="5" name="place_to_buy"></textarea>
                           </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">เครื่องหมายระบุ:</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" name="syntax" required="required">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-sm-2" for="">นามใบเสร็จ:</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" name="namebill" required="required">
+                            </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">รูปภาพ :</label>
@@ -79,18 +91,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">เบอร์โทรศัพท์:</label>
-                            <div class="col-sm-10">
-                            <input type="text" class="form-control" name="telephone" required="required">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">เบอร์แฟกซ์:</label>
-                            <div class="col-sm-10">
-                            <input type="text" class="form-control" name="fax" required="required">
-                            </div>
-                          </div>
+
 
 
 
@@ -101,9 +102,9 @@
                             </div> --}}
                             <div class="col-md-10 col-md-offset-2">
                               <button type="submit" class="btn btn-primary">
-                                <span class='glyphicon glyphicon glyphicon-ok'></span> Create Customer
+                                <span class='glyphicon glyphicon glyphicon-ok'></span> Create Product
                               </button>
-                              <button type="button" class="btn btn-danger" onclick="window.location='{{ url("customer") }}'">
+                              <button type="button" class="btn btn-danger" onclick="window.location='{{ url("product") }}'">
                                 <span class='glyphicon glyphicon-remove'></span> Cancle
                               </button>
                             </div>

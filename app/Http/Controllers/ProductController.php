@@ -46,7 +46,7 @@ class ProductController extends Controller
           'syntax'=>'required',
           'namebill'=>'required',
         ]);
-        $customer = new Customer;
+        $product = new Product;
         if ($file = $request->file('file')) {
           $name = $request->name.date("YmdHis").".".$file->getClientOriginalExtension();
           $file->move('img/product',$name);
@@ -54,15 +54,15 @@ class ProductController extends Controller
           $pathpic = 'img/product/'.$input['path'];
         }
         else {
-          $pathpic = "img/avatar5.png";
+          $pathpic = "img/testproduct.png";
         }
-        $customer->name = $request->name;
-        $customer->countable = $request->countable;
-        $customer->place_to_buy = $request->place_to_buy;
-        $customer->syntax = $request->syntax;
-        $customer->namebill = $request->namebill;
-        $customer->path_pic = $pathpic;
-        $customer->save();
+        $product->name = $request->name;
+        $product->countable = $request->countable;
+        $product->place_to_buy = $request->place_to_buy;
+        $product->syntax = $request->syntax;
+        $product->namebill = $request->namebill;
+        $product->path_pic = $pathpic;
+        $product->save();
         return redirect('product');
     }
 
@@ -99,7 +99,32 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $product = Product::where('id',$id)->first();
+      $this->validate($request,[
+        'name' => 'required',
+        'countable'=> 'required',
+        'place_to_buy'=>'required',
+        'syntax'=>'required',
+        'namebill'=>'required',
+      ]);
+      if ($file = $request->file('file')) {
+        $name = $request->name.date("YmdHis").".".$file->getClientOriginalExtension();
+        $file->move('img/product',$name);
+        $input['path']=$name;//file <--name of column
+        $pathpic = 'img/product/'.$input['path'];
+      }
+      else {
+        $pathpic = $product->path_pic;
+      }
+
+      $product->name = $request->name;
+      $product->countable = $request->countable;
+      $product->place_to_buy = $request->place_to_buy;
+      $product->syntax = $request->syntax;
+      $product->namebill = $request->namebill;
+      $product->path_pic = $pathpic;
+      $product->save();
+      return redirect('product');
     }
 
     /**
@@ -110,6 +135,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $product = Product::where('id', $id)->delete();
+      // Delete Pic Uploaded
+      $productpic = Product::where('id',$id)->first();
+      if ($productpic->path_pic != 'img/avatar5.png') {
+        File::delete($productpic->path_pic);
+      }
+      return redirect('product');
     }
 }
