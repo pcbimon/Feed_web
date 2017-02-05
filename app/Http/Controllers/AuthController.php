@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use App\TypeUser;
 class AuthController extends Controller
 {
     //
@@ -21,7 +21,8 @@ class AuthController extends Controller
       if (\Auth::attempt($data)) {
 
         // return "Login Success";
-        return redirect('main');
+        return redirect('main')->with('typeuser', TypeUser::find(\Auth::user()->type_user_id)->TypeName);
+        // return dd(TypeUser::find(\Auth::user()->type_user_id)->TypeName);
       }
       return back()->withInput();
     }

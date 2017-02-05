@@ -316,7 +316,7 @@
 
         </li>
 
-        @if (\Auth::user()->type_user_id == '1')
+        @if (App\TypeUser::find(\Auth::user()->type_user_id)->TypeName == 'Administator')
           <li class="treeview" id="analys">
             <a href="#">
               <i class="fa fa-files-o"></i>
@@ -389,7 +389,7 @@
             </ul>
           </li>
         @endif
-        @if (\Auth::user()->type_user_id == '2')
+        @if (App\TypeUser::find(\Auth::user()->type_user_id)->TypeName == 'Inspector')
 
           <li class="treeview">
             <a href="#">
@@ -428,7 +428,7 @@
             </ul>
           </li>
         @endif
-        @if (\Auth::user()->type_user_id == '3')
+        @if (App\TypeUser::find(\Auth::user()->type_user_id)->TypeName == 'Reception')
           <li class="treeview" id="analys">
             <a href="#">
               <i class="fa fa-files-o"></i>
@@ -446,7 +446,7 @@
           </li>
 
         @endif
-        @if (\Auth::user()->type_user_id == '4')
+        @if (App\TypeUser::find(\Auth::user()->type_user_id)->TypeName == 'Analys')
           <li class="treeview">
             <a href="#">
               <i class="fa fa-files-o"></i>
