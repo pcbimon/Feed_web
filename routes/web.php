@@ -32,6 +32,10 @@ Route::group(['middleware'=>['web','auth']],function(){
   Route::get('/viewsubject',array('as'=>'ViewOnly','uses'=>'SubjectAnalysisController@ViewOnly'));
   Route::resource('/customer','CustomerController');
   Route::resource('/product','ProductController');
+  Route::get('/receive', function()
+  {
+    return view('main.operation.receive.index');
+  });
 });
 
 //simple crud
