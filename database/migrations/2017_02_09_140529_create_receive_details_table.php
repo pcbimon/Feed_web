@@ -14,8 +14,13 @@ class CreateReceiveDetailsTable extends Migration
     public function up()
     {
         Schema::create('receive_details', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id');
+            $table->string('psubid');
+            $table->string('subjectid');
+            $table->double('result');
             $table->timestamps();
+            $table->softDeletes();
+            $table->primary(array('id', 'psubid'));
         });
     }
 

@@ -14,8 +14,13 @@ class CreateReceivesTable extends Migration
     public function up()
     {
         Schema::create('receives', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id');
+            $table->string('userid');
+            $table->string('customerid');
+            $table->string('productid');
             $table->timestamps();
+            $table->softDeletes();
+            $table->primary(array('id'));
         });
     }
 
