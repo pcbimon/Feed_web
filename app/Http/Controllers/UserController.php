@@ -18,8 +18,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         //
         // $users = User::join('type_users','type_user_id','=','type_users.id')->get();
         $users = User::join('type_users','type_user_id','=','type_users.id')->select('users.*','type_users.TypeName')->get();
@@ -36,6 +40,9 @@ class UserController extends Controller
      */
     public function create()
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         $typeusers = TypeUser::all();
         $SubjectAnalysis = SubjectAnalysis::all();
         return view('main.user.create',compact('typeusers','SubjectAnalysis'));
@@ -50,7 +57,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         //
         $this->validate($request,[
           'user_name' => 'required',
@@ -115,6 +124,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         //
         $user = User::findOrFail($id);
         $sectionuser = SectionUser::select('iduser','idsubject')->where('iduser', '=', $id)->get();
@@ -132,7 +144,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         $user = User::where('id',$id)->first();
         $this->validate($request,[
           'user_name' => 'required',
@@ -184,7 +198,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         // Delete Data User
         $user = User::where('id',$id)->delete();
         // Delete Pic Uploaded

@@ -205,7 +205,7 @@ text-align: left;
           <div class="row">
           {!! Form::open(['method' => 'POST', 'action' => 'ReceiveDetailController@addsubject', 'class' => 'form-horizontal']) !!}
             <div class="col-md-6">
-              หัวข้อการวิเคราะห์ <select class="form-control selectpicker" data-live-search="true" data-size="5" data-width="100%" name="subject_analys" title="กรุณาเลือกหัวข้อการวิเคราะห์">
+              หัวข้อการวิเคราะห์ <select class="form-control selectpicker" data-live-search="true" data-size="5" data-width="100%" name="subject_analys" title="กรุณาเลือกหัวข้อการวิเคราะห์" multiple>
                 @foreach($analys as $item)
                     <option value="{{$item->id}}">{{$item->name}}</option>
                 @endforeach

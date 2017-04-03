@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use softDeletes;
     use Notifiable;
     protected $dates = ['deleted_at'];
     /**

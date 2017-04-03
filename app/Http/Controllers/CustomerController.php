@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 use App\Customer;
+use App\TypeUser;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         $customers = Customer::all();
         return view('main.customer.index',compact('customers'));
+
+
     }
 
     /**
@@ -26,6 +33,9 @@ class CustomerController extends Controller
     public function create()
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+          return redirect('main');
+        }
         return view('main.customer.create');
     }
 
@@ -37,6 +47,9 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         //
         $this->validate($request,[
           'name' => 'required',
@@ -84,6 +97,9 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         $customer = Customer::findOrFail($id);
         return view('main.customer.edit',compact('customer'));
     }
@@ -97,6 +113,9 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
       $customer = Customer::where('id',$id)->first();
       $this->validate($request,[
         'name' => 'required',
@@ -134,6 +153,9 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         $customer = Customer::where('id', $id)->delete();
         // Delete Pic Uploaded
         $customerpic = Customer::where('id',$id)->first();

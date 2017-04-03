@@ -14,10 +14,6 @@ use App\User;
 Route::get('/', function () {
     return view('indexfirst');
 });
-Route::get('/admin/user/role',['middleware'=>['role','web','auth'],function()
-{
-  return "Role Middleware";
-}]);
 Route::get('/checkuser', 'LoginController@checkuser');
 Route::group(['middleware'=>['web']],function(){
   Route::get('/login',['as'=>'login','uses'=>'AuthController@login']);
@@ -36,7 +32,6 @@ Route::group(['middleware'=>['web','auth']],function(){
     Route::post('receive/showcustomer','ReceiveController@showcustomer');
     Route::post('receive/showproduct','ReceiveController@showproduct');
     Route::post('receive/check','ReceiveController@receivedetail');
-
   Route::resource('received/detail','ReceiveDetailController');
     Route::post('received/detail/addsubject','ReceiveDetailController@addsubject');
 });

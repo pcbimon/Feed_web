@@ -44,36 +44,40 @@ class ReceiveDetailController extends Controller
         $orderno = 0;
       }
       // $request->session()->put('Cpsubid',0);
-      if ($orderno == 0) {
-        $subject_analys = SubjectAnalysis::where('id', $request->subject_analys)->first();
-        $request->session()->push('analys', $subject_analys->name);
-        $request->session()->push('no', $request->number_add);
-        $count_psubid = ReceiveDetail::whereYear('created_at', date('Y'))->count();
-        $count_psubid += 1;
-        $request->session()->put('Cpsubid',1);
-        $psubid = ($count_psubid)."/".date('Y');
-        $request->session()->push('psubid', $psubid);
-        $orderno = 1;
-        $request->session()->put('orderno', $orderno);
-        $sprice = SubjectAnalysis::where('id', $request->subject_analys)->first();
-        $request->session()->push('sprice', $sprice->price);
-        // return $request->session()->all();
-        return redirect('/received/detail');
-      }
-      else {
-        $subject_analys = SubjectAnalysis::where('id', $request->subject_analys)->first();
-        $request->session()->push('analys', $subject_analys->name);
-        $request->session()->push('no', $request->number_add);
-        $count_psubid = $request->session()->get('Cpsubid');
-        $count_psubid +=1;
-        $psubid = ($count_psubid)."/".date('Y');
-        $request->session()->push('psubid', $psubid);
-        $request->session()->put('orderno', $orderno);
-        $sprice = SubjectAnalysis::where('id', $request->subject_analys)->first();
-        $request->session()->push('sprice', $sprice->price);
-        // return $request->session()->all();
-        return redirect('/received/detail');
-      }
+      // if ($orderno == 0)
+      // $number_topic = count($request->subject_analys);
+      //   for ($i=0; $i < $number_topic; $i++) {
+      //     $subject_analys = SubjectAnalysis::where('id', $request->subject_analys[$i])->first();
+      //     $request->session()->push('analys', $subject_analys->name);
+      //   }
+      //
+      //   $request->session()->push('no', $request->number_add);
+      //   $count_psubid = ReceiveDetail::whereYear('created_at', date('Y'))->count();
+      //   $count_psubid += 1;
+      //   $request->session()->put('Cpsubid',1);
+      //   $psubid = ($count_psubid)."/".date('Y');
+      //   $request->session()->push('psubid', $psubid);
+      //   $orderno = 1;
+      //   $request->session()->put('orderno', $orderno);
+      //   $sprice = SubjectAnalysis::where('id', $request->subject_analys)->first();
+      //   $request->session()->push('sprice', $sprice->price);
+      //   // return $request->session()->all();
+      //   return redirect('/received/detail');
+      // }
+      // else {
+      //   $subject_analys = SubjectAnalysis::where('id', $request->subject_analys)->first();
+      //   $request->session()->push('analys', $subject_analys->name);
+      //   $request->session()->push('no', $request->number_add);
+      //   $count_psubid = $request->session()->get('Cpsubid');
+      //   $count_psubid +=1;
+      //   $psubid = ($count_psubid)."/".date('Y');
+      //   $request->session()->push('psubid', $psubid);
+      //   $request->session()->put('orderno', $orderno);
+      //   $sprice = SubjectAnalysis::where('id', $request->subject_analys)->first();
+      //   $request->session()->push('sprice', $sprice->price);
+      //   // return $request->session()->all();
+      //   return redirect('/received/detail');
+      // }
 
       // return redirect('/received/detail');
     }
