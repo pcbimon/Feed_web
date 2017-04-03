@@ -16,6 +16,9 @@ class SubjectAnalysisController extends Controller
     public function index()
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+          return redirect('main');
+        }
         $subjectanalys = SubjectAnalysis::all();
         return view('main.subject_analys.index',compact('subjectanalys'));
     }
@@ -28,6 +31,9 @@ class SubjectAnalysisController extends Controller
     public function create()
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+          return redirect('main');
+        }
         return view('main.subject_analys.create');
     }
 
@@ -40,6 +46,9 @@ class SubjectAnalysisController extends Controller
     public function store(Request $request)
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Inspector") {
+          return redirect('main');
+        }
         $this->validate($request,[
           'subject_name' => 'required',
           'subject_price' => 'required'
@@ -71,6 +80,9 @@ class SubjectAnalysisController extends Controller
     public function edit($id)
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator" ) {
+          return redirect('main');
+        }
         $subjectanalys = SubjectAnalysis::findOrFail($id);
         return view('main.subject_analys.edit',compact('subjectanalys'));
     }
@@ -85,6 +97,9 @@ class SubjectAnalysisController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator" ) {
+          return redirect('main');
+        }
         $subjectanalys = SubjectAnalysis::where('id',$id)->first();
         $subjectanalys->name = $request->subject_name;
         $subjectanalys->price = $request->subject_price;
@@ -101,11 +116,17 @@ class SubjectAnalysisController extends Controller
     public function destroy($id)
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+          return redirect('main');
+        }
         $subjectanalys = SubjectAnalysis::where('id',$id)->delete();
         return redirect('subjectanalys');
     }
     public function ViewOnly()
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Inspector") {
+        return redirect('main');
+      }
       $subjectanalys = SubjectAnalysis::all();
       return view('main.subject_analys.view',compact('subjectanalys'));
     }

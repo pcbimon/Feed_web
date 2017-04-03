@@ -15,6 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+          return redirect('main');
+        }
         $product = Product::all();
         return view('main.product.index',compact('product'));
     }
@@ -27,6 +30,9 @@ class ProductController extends Controller
     public function create()
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+          return redirect('main');
+        }
         return view('main.product.create');
     }
 
@@ -39,6 +45,9 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+          return redirect('main');
+        }
         $this->validate($request,[
           'name' => 'required',
           'countable'=> 'required',
@@ -86,6 +95,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+          return redirect('main');
+        }
         $product = Product::findOrFail($id);
         return view('main.product.edit',compact('product'));
     }
@@ -99,6 +111,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
       $product = Product::where('id',$id)->first();
       $this->validate($request,[
         'name' => 'required',
@@ -135,6 +150,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
       $product = Product::where('id', $id)->delete();
       // Delete Pic Uploaded
       $productpic = Product::where('id',$id)->first();

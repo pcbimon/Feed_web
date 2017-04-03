@@ -16,6 +16,9 @@ class ReceiveController extends Controller
      */
     public function index(Request $request)
     {
+      if (TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Reception" and TypeUser::find(\Auth::user()->type_user_id)->TypeName != "Administator") {
+        return redirect('main');
+      }
         //Delete All Session
         // $request->session()->flush();
         $customer = Customer::all();
