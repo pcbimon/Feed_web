@@ -25,7 +25,7 @@
   <body>
             <span style="display:inline-block; width: 50%;"><center>Lab 1</center></span><span style="display:inline-block; width: 50%;"><center>Lab 2</center></span><br>
             <div class="QR">
-              <img src="https://image.ibb.co/ntTBoQ/qrtest.jpg" alt="qrtest" border="0" width="72pt" height="72pt" style="border:1px solid #021a40;"><br>รหัสตัวอย่าง 1234567890
+              <img src="https://image.ibb.co/ntTBoQ/qrtest.jpg" alt="qrtest"  ="0" width="72pt" height="72pt" style="border:1px solid #021a40;"><br>รหัสตัวอย่าง 1234567890
             </div><br>
             <div class="content">
               รหัสตัวอย่าง</span><br>

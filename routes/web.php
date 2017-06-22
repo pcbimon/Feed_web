@@ -35,6 +35,7 @@ Route::group(['middleware'=>['web','auth']],function(){
     Route::post('receive/check','ReceiveController@receivedetail');
   Route::resource('received/detail','ReceiveDetailController');
     Route::post('received/detail/addsubject','ReceiveDetailController@addsubject');
+  Route::resource('received/check','CheckandPrintController');
 });
 
 
