@@ -6,10 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "barryvdh/laravel-dompdf": "^0.8.0",
         "intervention/image": "^2.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
+        "mpdf/mpdf": "^6.1",
+        "niklasravnsborg/laravel-pdf": "^1.5",
         "twbs/bootstrap": "4.0.0-alpha.6"
     },
     "require-dev": {

@@ -223,4 +223,10 @@ class UserController extends Controller
     {
       $user = User::where('email', $email)->count();
     }
+    public function isAsmin()
+    {
+      if ($this->typeusers->name == "Ad") {
+        # code...
+      }
+    }
 }

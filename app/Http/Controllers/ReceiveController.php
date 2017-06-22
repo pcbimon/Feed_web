@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Customer;
 use App\Product;
 use App\SubjectAnalysis;
+use App\TypeUser;
 
 class ReceiveController extends Controller
 {

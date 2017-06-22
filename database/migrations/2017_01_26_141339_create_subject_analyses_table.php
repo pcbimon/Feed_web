@@ -17,6 +17,7 @@ class CreateSubjectAnalysesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('price');
+            $table->string('operationname');
             $table->softDeletes();
             $table->timestamps();
         });

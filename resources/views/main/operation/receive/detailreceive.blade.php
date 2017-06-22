@@ -54,6 +54,9 @@ text-align: right;
 /* text-align:right; */
 text-align: left;
 }
+.HeadAnalysis{
+background-color: #d9d9d9;
+}
 </style>
         <div class="content-wrapper">
       		<!-- Content Header (Page header) -->
@@ -129,9 +132,40 @@ text-align: left;
                                         @endforeach
                                       </div>
                                     @endif
-      															<button class="btn btn-info btn-block" name="button" type="button" data-toggle="modal" data-target="#add_subject">เพิ่มหัวข้อการวิเคราะห์</button>
-      														</div>
-      													</div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  {!! Form::open(['method' => 'POST', 'action' => 'ReceiveDetailController@addsubject', 'class' => 'form-horizontal']) !!}
+                                    <div class="col-md-6">
+                                      <div class="col-md-12">
+                                         หัวข้อการวิเคราะห์
+                                         <select class="form-control selectpicker" data-live-search="true" data-size="5" data-width="100%" name="subject_analys[]" title="กรุณาเลือกหัวข้อการวิเคราะห์" multiple>
+                                          @foreach($analys as $item)
+                                            @for ($i = 0; $i < count($request_analysis); $i++)
+                                              @if ($item->name == $request_analysis[$i])
+                                                <option value="{{$item->id}}" selected>{{$item->name}}</option>
+                                              @else
+                                                <option value="{{$item->id}}" >{{$item->name}}</option>
+                                              @endif
+                                            @endfor
+                                          @endforeach
+                                          </select>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        จำนวนตัวอย่าง <input class="form-control" type="number" name="number_add" value="{{$request_num[0]}}" min="0" step="1" >
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                  <div class="col-md-12">
+      															<button class="btn btn-primary btn-block" type="submit">เพิ่มหัวข้อการวิเคราะห์</button>
+                                    {{ csrf_field() }}
+                                    {!! Form::close() !!}
+                                  </div>
+                                </div>
+                              </div>
+
       													<div class="row">
       														<div class="col-md-12">
       															<div class="table-responsive">
@@ -139,9 +173,7 @@ text-align: left;
       																	<thead>
       																		<tr>
       																			<th>#</th>
-      																			<th>รหัสตัวอย่างการวิเคราะห์</th>
       																			<th>หัวข้อการวิเคราะห์</th>
-      																			<th>จำนวนตัวอย่าง</th>
       																			<th>ราคาต่อตัวอย่าง</th>
       																			<th>ค่าใช้จ่ายต่อรายการ</th>
       																		</tr>
@@ -150,21 +182,20 @@ text-align: left;
                                           @php
                                             $total = 0;
                                           @endphp
-                                          @for ($i = 0; $i < count($request_analysis); $i++)
+                                            @for ($i = 0; $i < count($request_analysis); $i++)
                                             <tr>
-        																			<th scope="row">{{$i+1}}</th>
-        																			<td>{{$psubid[$i]}}</td>
-        																			<td>{{$request_analysis[$i]}}</td>
-        																			<td>{{$request_number[$i]}}</td>
-        																			<td>{{$sprice[$i]}}</td>
-        																			<td>{{$request_number[$i]*$sprice[$i]}}</td>
-        																		</tr>
-                                            @php
-                                              $total = $total + $request_number[$i]*$sprice[$i];
-                                            @endphp
-                                          @endfor
+                                                <td>{{$i+1}}</td>
+                                                <td>{{$request_analysis[$i]}}</td>
+                                                <td>{{$sprice[$i]}}</td>
+                                                <td>{{$request_num[0]*$sprice[$i]}}</td>
+                                                @php
+                                                   $total = $total + ($request_num[0]*$sprice[$i]);
+                                                @endphp
+                                            </tr>
+                                            @endfor
+
       																		<tr>
-      																			<td align="right" colspan="5">ค่าใช้จ่ายรวมสุทธิ</td>
+      																			<td align="right" colspan="3">ค่าใช้จ่ายรวมสุทธิ</td>
       																			<td>{{$total}} บาท</td>
       																		</tr>
       																	</tbody>
@@ -173,10 +204,10 @@ text-align: left;
       														</div>
       													</div>
       													<div class="col-md-6">
-      														<button class="btn btn-info btn-block" id="activate-step-1" name="button" type="button">ก่อนหน้า</button>
+      														<button class="btn btn-primary btn-block" id="activate-step-1" name="button" type="button">ก่อนหน้า</button>
       													</div>
       													<div class="col-md-6">
-      														<button class="btn btn-info btn-block" id="activate-step-3" name="button" type="button">ถัดไป</button>
+      														<button class="btn btn-primary btn-block" id="activate-step-3" name="button" type="button">ถัดไป</button>
       													</div>
       												</div>
       											</div>
@@ -204,16 +235,14 @@ text-align: left;
         <div class="modal-body">
           <div class="row">
           {!! Form::open(['method' => 'POST', 'action' => 'ReceiveDetailController@addsubject', 'class' => 'form-horizontal']) !!}
-            <div class="col-md-6">
-              หัวข้อการวิเคราะห์ <select class="form-control selectpicker" data-live-search="true" data-size="5" data-width="100%" name="subject_analys" title="กรุณาเลือกหัวข้อการวิเคราะห์" multiple>
+            <div class="col-md-12">
+              หัวข้อการวิเคราะห์ <select class="form-control selectpicker" data-live-search="true" data-size="5" data-width="100%" name="subject_analys[]" title="กรุณาเลือกหัวข้อการวิเคราะห์" multiple>
                 @foreach($analys as $item)
                     <option value="{{$item->id}}">{{$item->name}}</option>
                 @endforeach
               </select>
             </div>
-            <div class="col-md-6">
-              จำนวนตัวอย่าง <input class="form-control" type="number" name="number_add" value="0" min="0" step="1">
-            </div>
+
 
         </div>
         </div>

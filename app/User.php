@@ -33,8 +33,8 @@ class User extends Authenticatable
     {
       return $this->belongsTo('App\TypeUser');
     }
-    public function section()
-    {
-      return $this->belongsTo('App\SectionUser');
-    }
+    // public function section()
+    // {
+    //   return $this->belongsTo('App\SectionUser');
+    // }
 }

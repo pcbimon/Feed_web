@@ -14,6 +14,7 @@ use App\User;
 Route::get('/', function () {
     return view('indexfirst');
 });
+Route::get('/pdf1','PDFController@pdf');
 Route::get('/checkuser', 'LoginController@checkuser');
 Route::group(['middleware'=>['web']],function(){
   Route::get('/login',['as'=>'login','uses'=>'AuthController@login']);
@@ -35,6 +36,8 @@ Route::group(['middleware'=>['web','auth']],function(){
   Route::resource('received/detail','ReceiveDetailController');
     Route::post('received/detail/addsubject','ReceiveDetailController@addsubject');
 });
+
+
 
 //simple crud
 // Route::get ( '/', 'IndexController@readItems' );
