@@ -22,6 +22,7 @@ class AuthController extends Controller
 
         // return "Login Success";
         return redirect('main');
+        
         //->with('typeuser'=>TypeUser::find(\Auth::user()->type_user_id)->TypeName);
         // return dd(TypeUser::find(\Auth::user()->type_user_id)->TypeName);
       }

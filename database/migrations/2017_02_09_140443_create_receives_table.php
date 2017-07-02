@@ -14,13 +14,20 @@ class CreateReceivesTable extends Migration
     public function up()
     {
         Schema::create('receives', function (Blueprint $table) {
-            $table->string('id');
+            $table->increments('id');
             $table->string('userid');
             $table->string('customerid');
             $table->string('productid');
+            $table->string('analysid');
+            $table->integer('no');
+            $table->string('ReceiveBy');
+            $table->string('ReceiveDesc');
+            $table->string('ReceiveLang');
+            $table->string('ReceivePay');
+            $table->string('ReceiveAmount');
+            $table->string('ReceiveOptional');
             $table->timestamps();
             $table->softDeletes();
-            $table->primary(array('id'));
         });
     }
 

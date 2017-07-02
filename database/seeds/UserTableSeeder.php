@@ -15,6 +15,7 @@ class UserTableSeeder extends Seeder
         User::create([
           'name'=>'Test User',
           'type_user_id'=>'1',
+          'lab_id' => '1',
           'email'=>'test@gmail.com',
           'password'=>bcrypt('1234'),
           'path_pic'=>'img/avatar5.png'
@@ -23,6 +24,7 @@ class UserTableSeeder extends Seeder
         User::create([
           'name'=>'Test User1',
           'type_user_id'=>'1',
+          'lab_id' => '1',
           'email'=>'test1@gmail.com',
           'password'=>bcrypt('1234'),
           'path_pic'=>'img/avatar5.png'

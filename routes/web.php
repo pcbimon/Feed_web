@@ -1,5 +1,8 @@
 <?php
 use App\User;
+use App\Receive;
+use App\SubjectAnalysis;
+use App\ReceiveDetail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +16,15 @@ use App\User;
 
 Route::get('/', function () {
     return view('indexfirst');
+});
+Route::get('/testdata', function()
+{
+  // $CountReceive = Receive::whereYear('created_at','=',date('Y'))->count()+1;
+  // $analysid = $CountReceive . '/'. date('Y');
+  // return $analysid;
+  // $userid = User::order_by('created_at', 'desc')->get();
+  // $subject_analys = ;
+  // return $subject_analys;
 });
 Route::get('/pdf1','PDFController@pdf');
 Route::get('/checkuser', 'LoginController@checkuser');
@@ -36,6 +48,9 @@ Route::group(['middleware'=>['web','auth']],function(){
   Route::resource('received/detail','ReceiveDetailController');
     Route::post('received/detail/addsubject','ReceiveDetailController@addsubject');
   Route::resource('received/check','CheckandPrintController');
+  Route::resource('received/print','ReceiveResultController');
+    Route::post('received/print/pdf','ReceiveResultController@PrintReport');
+    Route::post('received/print/sticker','ReceiveResultController@PrintSticker');
 });
 
 

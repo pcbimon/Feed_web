@@ -175,15 +175,105 @@ background-color: #d9d9d9;
       															</div>
       														</div>
       													</div>
-      													<div class="col-md-6">
-      														<button class="btn btn-primary btn-block" id="activate-step-1" name="button" type="button">ก่อนหน้า</button>
-      													</div>
+                                <hr>
+                                <h1>ตัวเลือกการจัดส่งและการชำระเงิน</h1>
 
-                                {!! Form::open(['method' => 'POST', 'uses' => '', 'class' => 'form-horizontal']) !!}
+                                <div class="row">
                                   <div class="col-md-6">
-                                    <button class="btn btn-primary btn-block" id="activate-step-3" name="button" type="submit">ถัดไป</button>
+                                      <div class="col-md-12">
+                                        <label for="">การรับผลการวิเคราะห์ </label><br>
+                                        <table class="table">
+                                          <thead>
+                                            <tr>
+                                              <th>รายการ</th>
+                                              <th>รายละเอียด</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            @for ($i = 0; $i < count($PickupBy); $i++)
+                                              <tr>
+                                                <td>{{$PickupBy[$i]}}</td>
+                                                <td>{{$PickupDes[$i]}}</td>
+                                              </tr>
+                                            @endfor
+                                          </tbody>
+                                        </table>
+                                      </div>
                                   </div>
-                                {!! Form::close() !!}
+                                  <div class="col-md-6">
+                                      <div class="col-md-12">
+                                        <label for="">ออกรายงานผล</label>
+                                        <br>
+                                        <table class="table">
+                                          <thead>
+                                            <tr>
+                                              <th>ภาษา</th>
+                                              <th>จำนวน(ฉบับ)</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td>ภาษาไทย</label></td>
+                                              <td>{{$THForm}}</td>
+                                            </tr>
+                                            <tr>
+                                              <td>ภาษาอังกฤษ</td>
+                                              <td>{{$ENForm}}</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="col-md-12">
+                                        <label for="">หมายเหตุ</label><br>
+                                        @if (is_null($OptionOptional))
+                                          -
+                                        @else
+                                          @for ($i = 0; $i < count($OptionOptional)-1; $i++)
+
+                                              <i class="fa fa-circle" aria-hidden="true"> {{$OptionOptional[$i]}}</i><br>
+
+                                          @endfor
+                                        @endif
+
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="col-md-12">
+                                        <label for="">การชำระเงิน</label>
+                                        <div class="form-group">
+                                          <div class="col-md-6">
+                                            {{$OptionPurchase}}
+                                          </div>
+                                          <div class="col-md-6">
+                                            {{$OptionPurchaseAmout}}
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                  </div>
+                                </div>
+
+                                <hr>
+                                <div class="col-md-6">
+                                  <button class="btn btn-primary btn-block" id="activate-step-1" name="button" type="button">ก่อนหน้า</button>
+                                </div>
+                                {{-- {!! Form::open(['method' => 'get', 'url' => 'received/check', 'class' => 'form-horizontal']) !!}
+                                <div class="col-md-6">
+                                  <button class="btn btn-primary btn-block" id="activate-step-3" name="button" type="submit">ถัดไป</button>
+                                </div>
+                                {!! Form::close() !!} --}}
+                                <form class="form-horizontal" action="/received/print" method="post">
+                                  <div class="form-group">
+                                    <div class="col-md-6">
+                                      <button class="btn btn-primary btn-block" id="activate-step-3" name="button" type="submit">ถัดไป</button>
+                                      {{ csrf_field() }}
+                                    </div>
+                                  </div>
+                                </form>
 
       												</div>
       											</div>

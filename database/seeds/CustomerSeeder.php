@@ -15,7 +15,12 @@ class CustomerSeeder extends Seeder
         //
         \DB::table('customers')->delete();
         Customer::create([
-          'name'=>'หน่วยรับตัวอย่างอาหารสัตว์',
+          'name'=>'ปฏิพัทธ์ ชิวปรีชา',
+          'address'=>'109 m.6 Huymoung',
+          'email'=>'pcbimon@gmail.com',
+          'fax'=>'924934708',
+          'telephone'=>'0924934708',
+          'path_pic'=>'img/customer/pcbimon@gmail.com201706300924934708.png'
         ]);
     }
 }

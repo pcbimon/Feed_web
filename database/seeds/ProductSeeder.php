@@ -16,9 +16,8 @@ class ProductSeeder extends Seeder
         \DB::table('products')->delete();
         Product::create([
           'name'=>'ชานอ้อยบดละเอียด',
-          'countable'=>'100',
+          'countable'=>'10',
           'place_to_buy'=>'ร้านสหกรณ์การเกษตร ตำบลห้วยขวาง อำเภอแม่ขจี จังหวัดนครปฐม',
-          'syntax'=>'สีเหลือง ติดป้ายชื่อ นายมานี',
           'namebill'=>'นายมานี หนองงูเหลือม',
           'path_pic'=>'img/testproduct.png',
         ]);

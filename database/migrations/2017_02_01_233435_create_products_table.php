@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('countable');
             $table->text('place_to_buy');
-            $table->string('syntax');
             $table->string('namebill');
             $table->string('path_pic');
             $table->timestamps();
