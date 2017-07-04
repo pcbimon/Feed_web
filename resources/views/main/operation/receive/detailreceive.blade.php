@@ -149,7 +149,7 @@ background-color: #d9d9d9;
                                   </div>
                                 </div>
                                 <div class="col-md-6">
-                                  <label for="">จำนวนตัวอย่าง {{$request_num}} ตัวอย่าง</label>
+                                  จำนวนตัวอย่าง {{$request_num}} ตัวอย่าง
                                     {{-- จำนวนตัวอย่าง <input class="form-control" type="number" name="number_add" value="{{$request_num}}" min="0" step="1" > --}}
                                 </div>
                             </div>
@@ -173,7 +173,14 @@ background-color: #d9d9d9;
                                         <th>หัวข้อการวิเคราะห์</th>
                                         <th>ราคาต่อตัวอย่าง</th>
                                         <th>ค่าใช้จ่ายต่อรายการ</th>
-                                        <th>ส่งไปห้องปฏิบัติการ</th>
+                                        <th>ส่งไปห้องปฏิบัติการ
+                                          <select class="form-control" data-live-search="true" data-size="5" data-width="100%" name="Lab_Opertaion[]"
+                                          title="กรุณาเลือกหัวข้อการวิเคราะห์">
+                                           @foreach($LabOperation as $item)
+                                             <option value="{{$item->id}}">{{$item->name}}</option>
+                                           @endforeach
+                                           </select>
+                                        </th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -193,13 +200,7 @@ background-color: #d9d9d9;
                                               <select class="form-control" data-live-search="true" data-size="5" data-width="100%" name="Lab_Opertaion[]"
                                               title="กรุณาเลือกหัวข้อการวิเคราะห์">
                                                @foreach($LabOperation as $item)
-                                                 <option value="{{$item->id}}"
-                                                   {{-- @for ($i = 0; $i < count($request_analysis); $i++)
-                                                     @if ($item->name == $request_analysis[$i])
-                                                       selected
-                                                     @endif
-                                                   @endfor --}}
-                                                   >{{$item->name}}</option>
+                                                 <option value="{{$item->id}}">{{$item->name}}</option>
                                                @endforeach
                                                </select>
                                             </td>
@@ -243,15 +244,15 @@ background-color: #d9d9d9;
                                     <table class="table">
                                       <tr>
                                         <td>ภาษา</td>
-                                        <td>จำนวน(ฉบับ)</td>
+
                                       </tr>
                                       <tr>
-                                        <td><label class="checkbox-inline"><input type="checkbox" value="" checked>ภาษาไทย</label></td>
-                                        <td><input type="number" name="THForm" class="" value="1" placeholder="0" min="0" step="1"></td>
+                                        <td><label class="checkbox-inline"><input type="checkbox" value="true" name="LangTH" checked>ภาษาไทย</label></td>
+
                                       </tr>
                                       <tr>
-                                        <td><label class="checkbox-inline"><input type="checkbox" value="">ภาษาอังกฤษ</label></td>
-                                        <td><input type="number" name="ENForm" class="" value="0" placeholder="0" min="0" step="1"></td>
+                                        <td><label class="checkbox-inline"><input type="checkbox" value="true" name="LangEN">ภาษาอังกฤษ</label></td>
+
                                       </tr>
                                     </table>
                                   </div>
@@ -286,7 +287,8 @@ background-color: #d9d9d9;
                                       </select>
                                       </div>
                                       <div class="col-md-6">
-                                        <input type="number" name="optionpurchase_amout" class="form-control" value="" placeholder="0">
+                                        {{-- {{(int)$total}}<br> --}}
+                                        <input type="number" name="optionpurchase_amout" class="form-control" placeholder="0" value={{(int)$total}} readonly>
                                       </div>
                                     </div>
                                   </div>
@@ -296,7 +298,7 @@ background-color: #d9d9d9;
 
                             <hr>
                             <div class="col-md-6">
-                              <button class="btn btn-primary btn-block" id="activate-step-1" name="button" type="button">ก่อนหน้า</button>
+                              <button class="btn btn-primary btn-block" id="activate-step-1" type="button" onclick="BackStep()">ก่อนหน้า</button>
                             </div>
                             {{-- {!! Form::open(['method' => 'get', 'url' => 'received/check', 'class' => 'form-horizontal']) !!}
                             <div class="col-md-6">
@@ -338,6 +340,7 @@ background-color: #d9d9d9;
 @endsection
 @section('footerscript')
   <script> $(document).ready(function() {
+
 	var navListItems = $('ul.setup-panel li a'),
 		allWells = $('.setup-content');
 	allWells.hide();
@@ -354,6 +357,9 @@ background-color: #d9d9d9;
 	});
 	$('ul.setup-panel li.active a').trigger('click');
 });
+function BackStep() {
+  window.location.href = '/receive';
+}
 function CheckEmail() {
   var element = document.getElementById("textemail");
     element.removeAttribute("disabled");

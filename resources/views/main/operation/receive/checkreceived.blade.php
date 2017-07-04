@@ -215,14 +215,16 @@ background-color: #d9d9d9;
                                             </tr>
                                           </thead>
                                           <tbody>
-                                            <tr>
-                                              <td>ภาษาไทย</label></td>
-                                              <td>{{$THForm}}</td>
-                                            </tr>
-                                            <tr>
-                                              <td>ภาษาอังกฤษ</td>
-                                              <td>{{$ENForm}}</td>
-                                            </tr>
+                                            @if ($THForm == "true")
+                                              <tr>
+                                                <td>ภาษาไทย</label></td>
+                                              </tr>
+                                            @endif
+                                            @if ($ENForm == "true")
+                                              <tr>
+                                                <td>ภาษาอังกฤษ</label></td>
+                                              </tr>
+                                            @endif
                                           </tbody>
                                         </table>
                                       </div>
@@ -261,9 +263,12 @@ background-color: #d9d9d9;
                                 </div>
 
                                 <hr>
+                                {!! Form::open(['method' => 'GET', 'url' => 'received/detail', 'class' => 'form-horizontal']) !!}
                                 <div class="col-md-6">
-                                  <button class="btn btn-primary btn-block" id="activate-step-1" name="button" type="button">ก่อนหน้า</button>
+                                  <button class="btn btn-primary btn-block" id="activate-step-1" name="button" type="submit">ก่อนหน้า</button>
                                 </div>
+                                {!! Form::close() !!}
+
                                 {{-- {!! Form::open(['method' => 'get', 'url' => 'received/check', 'class' => 'form-horizontal']) !!}
                                 <div class="col-md-6">
                                   <button class="btn btn-primary btn-block" id="activate-step-3" name="button" type="submit">ถัดไป</button>

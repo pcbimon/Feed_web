@@ -38,6 +38,10 @@ class ReceiveController extends Controller
 
     public function receivedetail(Request $request)
     {
+      // $this->validate($request,[
+      //   'customer' => 'required',
+      //   'product'=> 'required',
+      // ]);
       if ($request->session()->get('customerid') == '' || $request->session()->get('productid') == '' ) {
         return redirect('/receive');
       }

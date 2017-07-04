@@ -118,6 +118,18 @@ text-align: left;
       											<hr>
       											<div class="row setup-content" id="step-1">
       												<div class="col-xs-12">
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    @if (count($errors)>0)
+                                      <div class="alert alert-warning alert-dismissable fade in">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        @foreach ($errors->all() as $error)
+                                            <strong>Warning! </strong>{{$error}}<br>
+                                        @endforeach
+                                      </div>
+                                    @endif
+                                  </div>
+                                </div>
       													<div class="col-md-12">
       														<!-- ฟอร์มข้อมูลเบื้องต้น -->
 
@@ -126,7 +138,7 @@ text-align: left;
       															<div class="form-group">
       																<label class="control-label col-sm-2" for="name">ชื่อผู้ขอใช้บริการ</label>
       																<div class="col-sm-8">
-      																	<select class="selectpicker" data-live-search="true" data-size="5" data-width="100%" name="customer" title="กรุณาเลือกผู้ขอใช้บริการ" id="chooseuser" onchange="detailuser()" required="required">
+      																	<select class="selectpicker" data-live-search="true" data-size="5" data-width="100%" name="customer" title="กรุณาเลือกผู้ขอใช้บริการ" id="chooseuser" onchange="detailuser()">
                                           @foreach($customer as $item)
                                               <option value="{{$item->id}}" @if ($customerid==$item->id) {{ "selected" }} @endif>{{$item->name}}</option>
                                   				@endforeach
@@ -161,9 +173,7 @@ text-align: left;
       																</div>
       															</div>
                                   </form>
-                                  <form class="form-horizontal" id="formProduct" name="formIntro" data-width="100%" method="post"  action="receive/showproduct" required="required">
-
-
+                                  <form class="form-horizontal" id="formProduct" name="formIntro" data-width="100%" method="post"  action="receive/showproduct" >
       															<div class="form-group">
 
                                     <label class="control-label col-sm-2" for="name">ชื่อตัวอย่าง</label>

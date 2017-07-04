@@ -36,7 +36,7 @@ class ReceiveResultController extends Controller
                         ->distinct()
                         ->get();
       $ReceiveDetail = ReceiveDetail::where('id', '=', $request->session()->get('LastReceiveID'))
-                        ->select('receive_details.psubid')
+                        ->select('receive_details.*')
                         ->orderBy('receive_details.no')
                         ->distinct()
                         ->get();
@@ -103,7 +103,7 @@ class ReceiveResultController extends Controller
       $ReceiveDetail = ReceiveDetail::join('receives','receives.id','=','receive_details.id')
                         ->join('subject_analyses','receive_details.subjectid','=','subject_analyses.id')
                         ->join('products','receives.productid','=','products.id')
-                        ->select('receive_details.psubid','products.name','receives.created_at','subject_analyses.name as subject','receives.ReceiveOptional')
+                        ->select('receive_details.labid','receive_details.psubid','products.name','receives.created_at','subject_analyses.name as subject','receives.ReceiveOptional')
                         ->where('receive_details.id', '=', $request->session()->get('LastReceiveID'))
                         ->orderBy('receive_details.no')
                         // ->distinct()
@@ -139,6 +139,7 @@ class ReceiveResultController extends Controller
                         ]);
       return $pdf->stream();
     }
+    
 
     /**
      * Show the form for creating a new resource.

@@ -15,6 +15,10 @@ class CheckandPrintController extends Controller
      */
     public function index(Request $request)
     {
+      // return $request->all();
+      // $this->validate($request,[
+      //   'optionpurchase_amout' => 'required',
+      // ]);
       $request->session()->forget('PickupBy');
       $request->session()->forget('PickupDes');
       $request->session()->forget('THForm');
@@ -56,8 +60,20 @@ class CheckandPrintController extends Controller
 
       $PickupBy = $request->session()->get('PickupBy');
       $PickupDes = $request->session()->get('PickupDes');
-      $THForm = $request->session()->get('THForm');
-      $ENForm = $request->session()->get('ENForm');
+      if ($request->LangTH == 'true') {
+        $THForm = 'true';
+
+      }
+      else {
+        $THForm = 'false';
+      }
+      if ($request->LangEN == 'true') {
+        $ENForm = 'true';
+
+      }
+      else {
+        $ENForm = 'false';
+      }
       $OptionOptional = $request->session()->get('Optional');
       $OptionPurchase = $request->session()->get('OptionPurchase');
       $OptionPurchaseAmout = $request->session()->get('OptionPurchaseAmout');

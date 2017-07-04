@@ -34,7 +34,14 @@
     $i = 0;
     @endphp
       @foreach ($ReceiveDetail as $element)
-        <span style="display:inline-block; width: 50%;"><center>Lab 1</center></span><span style="display:inline-block; width: 50%;"><center>Lab 2</center></span><br>
+        @if ($element->labid == '1')
+        <span style="display:inline-block; width: 50%;">Lab 1
+         </span>
+         @endif
+          @if ($element->labid == '2')
+         <span style="display:inline-block; width: 50%;">
+            Lab 2
+         </span>@endif<br>
         <div class="QR">
           <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->generate($element->psubid))!!} " width="72pt" height="72pt" style="border:1px solid #021a40;"><br>รหัสตัวอย่าง {{$element->psubid}}
         </div><br>
