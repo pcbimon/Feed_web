@@ -39,6 +39,9 @@ class CheckandPrintController extends Controller
       for ($i=0; $i < count($request->optional); $i++) {
         $request->session()->push('Optional',$request->optional[$i]);
       }
+      for ($i=0; $i < count($request->Lab_Opertaion); $i++) {
+        $request->session()->push('Lab_Opertaion',$request->Lab_Opertaion[$i]);
+      }
       $request->session()->put('OptionPurchase',$request->optionpurchase);
       $request->session()->put('OptionPurchaseAmout',$request->optionpurchase_amout);
 
@@ -49,6 +52,7 @@ class CheckandPrintController extends Controller
       $request_analysis = $request->session()->get('analysname');
       $request_num = $request->session()->get('number_add');
       $sprice = $request->session()->get('sprice');
+      $Lab_Opertaion = $request->session()->get('Lab_Opertaion');
 
       $PickupBy = $request->session()->get('PickupBy');
       $PickupDes = $request->session()->get('PickupDes');
@@ -60,7 +64,7 @@ class CheckandPrintController extends Controller
       if (is_null($OptionOptional)) {
         $OptionOptional = 'ไม่มี';
       }
-      return view('main.operation.receive.checkreceived',compact('orderno','analys','request_analysis','request_num','PSubID_First','PSubID_Last','sprice','PickupBy','PickupDes','THForm','ENForm','OptionOptional','OptionPurchase','OptionPurchaseAmout'));
+      return view('main.operation.receive.checkreceived',compact('orderno','analys','request_analysis','request_num','PSubID_First','PSubID_Last','sprice','PickupBy','PickupDes','THForm','ENForm','OptionOptional','OptionPurchase','OptionPurchaseAmout','Lab_Opertaion'));
     }
 
     /**

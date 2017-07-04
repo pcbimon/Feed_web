@@ -7,6 +7,7 @@ use App\Product;
 use App\SubjectAnalysis;
 use App\ReceiveDetail;
 use App\ProductDetail;
+use App\LabOperation;
 
 class ReceiveDetailController extends Controller
 {
@@ -17,17 +18,19 @@ class ReceiveDetailController extends Controller
      */
     public function index(Request $request)
     {
+        $LabOperation = LabOperation::all();
         $analys = SubjectAnalysis::all();
         $request_analysis = $request->session()->get('analysname');
         $request_num = ProductDetail::where('id_product','=',$request->session()->get('productid'))->count();
         $sprice = $request->session()->get('sprice');
-        return view('main.operation.receive.detailreceive',compact('analys','request_analysis','request_num','sprice'));
+        return view('main.operation.receive.detailreceive',compact('analys','request_analysis','request_num','sprice','LabOperation'));
     }
     public function addsubject(Request $request)
     {
       $this->validate($request,[
         'subject_analys' => 'required',
       ]);
+
       $request_num = ProductDetail::where('id_product','=',$request->session()->get('productid'))->count();
       $request->session()->forget('analysid');
       $request->session()->forget('analysname');

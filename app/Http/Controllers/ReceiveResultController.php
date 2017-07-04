@@ -39,14 +39,12 @@ class ReceiveResultController extends Controller
                         ->select('receive_details.psubid')
                         ->orderBy('receive_details.no')
                         ->distinct()
-                        // ->union($GetProduct)
                         ->get();
       $SubjectAnalysis = SubjectAnalysis::join('receive_details','receive_details.subjectid','=','subject_analyses.id')
                         ->select('subject_analyses.*')
                         ->where('receive_details.id', '=', $request->session()->get('LastReceiveID'))
                         ->distinct()
                         ->get();
-
       $NumberReceive = Receive::where('id', $request->session()->get('LastReceiveID'))->get();
       $Customer = Customer::join('receives','receives.customerid','=','customers.id')
                   ->where('receives.id', '=', $request->session()->get('LastReceiveID'))
@@ -177,12 +175,14 @@ class ReceiveResultController extends Controller
         $PickupLang = '';
         $PickupLang = '';
         $OptionOptional = '';
+
         for ($i=0; $i < count($request->session()->get('PickupBy')); $i++) {
           $PickupBy .= $request->session()->get('PickupBy')[$i].',';
         }
         for ($i=0; $i < count($request->session()->get('PickupDes')); $i++) {
           $PickupDes .= $request->session()->get('PickupDes')[$i].',';
         }
+        $Lab_Opertaion = $request->session()->get('Lab_Opertaion');
         if ($request->session()->get('THForm') != '') {
           $PickupLang .= 'TH,';
         }
@@ -199,7 +199,6 @@ class ReceiveResultController extends Controller
         // $OptionOptional = $request->session()->get('Optional');
         $OptionPurchase = $request->session()->get('OptionPurchase');
         $OptionPurchaseAmout = $request->session()->get('OptionPurchaseAmout');
-
         $YearNow = date('Y');
         $CountReceive = Receive::whereYear('created_at','=',$YearNow)->count()+1;
         $analysid = $CountReceive . '/'. $YearNow;
@@ -229,7 +228,7 @@ class ReceiveResultController extends Controller
             $ReceiveDetail->id = $LastReceiveID;
             $ReceiveDetail->psubid = $CountReceiveProduct.'/'.$YearNow;
             $ReceiveDetail->subjectid = $request_analysis_id[$j];
-            $ReceiveDetail->labid = 'A';
+            $ReceiveDetail->labid = $Lab_Opertaion[$j];
             $ReceiveDetail->result = 0;
             $ReceiveDetail->save();
           }
@@ -244,6 +243,7 @@ class ReceiveResultController extends Controller
         $request->session()->forget('number_add');
         $request->session()->forget('count_psubid');
         $request->session()->forget('sprice');
+        $request->session()->forget('Lab_Opertaion');
 
         $request->session()->forget('PickupBy');
         $request->session()->forget('PickupDes');

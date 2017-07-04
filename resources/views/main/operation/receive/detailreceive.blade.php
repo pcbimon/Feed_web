@@ -162,7 +162,7 @@ background-color: #d9d9d9;
                               </div>
                             </div>
                           </div>
-
+                          <form class="form-horizontal" action="/received/check" method="get">
                           <div class="row">
                               <div class="col-md-12">
                                 <div class="table-responsive">
@@ -189,11 +189,27 @@ background-color: #d9d9d9;
                                             @php
                                                $total = $total + ($request_num*$sprice[$i]);
                                             @endphp
+                                            <td>
+                                              <select class="form-control" data-live-search="true" data-size="5" data-width="100%" name="Lab_Opertaion[]"
+                                              title="กรุณาเลือกหัวข้อการวิเคราะห์">
+                                               @foreach($LabOperation as $item)
+                                                 <option value="{{$item->id}}"
+                                                   {{-- @for ($i = 0; $i < count($request_analysis); $i++)
+                                                     @if ($item->name == $request_analysis[$i])
+                                                       selected
+                                                     @endif
+                                                   @endfor --}}
+                                                   >{{$item->name}}</option>
+                                               @endforeach
+                                               </select>
+                                            </td>
+
                                         </tr>
                                         @endfor
                                       <tr>
                                         <td align="right" colspan="3">ค่าใช้จ่ายรวมสุทธิ</td>
                                         <td>{{number_format($total,2)}} บาท</td>
+                                        <td></td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -202,7 +218,7 @@ background-color: #d9d9d9;
                             </div>
                             <hr>
                             <h1>ตัวเลือกการจัดส่งและการชำระเงิน</h1>
-                            <form class="form-horizontal" action="/received/check" method="get">
+
                             <div class="row">
                               <div class="col-md-6">
                                   <div class="col-md-12">

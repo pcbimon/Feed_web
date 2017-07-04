@@ -148,6 +148,7 @@ background-color: #d9d9d9;
       																			<th>หัวข้อการวิเคราะห์</th>
       																			<th>ราคาต่อตัวอย่าง</th>
       																			<th>ค่าใช้จ่ายต่อรายการ</th>
+                                            <th>ส่งไปห้องปฏิบัติการ</th>
       																		</tr>
       																	</thead>
       																	<tbody>
@@ -163,12 +164,14 @@ background-color: #d9d9d9;
                                                 @php
                                                    $total = $total + ($request_num*$sprice[$i]);
                                                 @endphp
+                                                <td>{{$Lab_Opertaion[$i]}}</td>
                                             </tr>
                                             @endfor
 
       																		<tr>
       																			<td align="right" colspan="3">ค่าใช้จ่ายรวมสุทธิ</td>
       																			<td>{{number_format($total,2)}} บาท</td>
+                                            <td></td>
       																		</tr>
       																	</tbody>
       																</table>
