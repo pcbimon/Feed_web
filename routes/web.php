@@ -19,12 +19,12 @@ Route::get('/', function () {
 });
 Route::get('/testdata', function()
 {
-  // $CountReceive = Receive::whereYear('created_at','=',date('Y'))->count()+1;
-  // $analysid = $CountReceive . '/'. date('Y');
-  // return $analysid;
-  // $userid = User::order_by('created_at', 'desc')->get();
-  // $subject_analys = ;
-  // return $subject_analys;
+  $excelFile = 'public/excel/test.xlsx';
+      $records = \Excel::load($excelFile, function ($reader) {
+               $reader->noHeading();
+         })->get()[8]->toArray(); //get value in Row
+
+         dd($records);
 });
 Route::get('/pdf1','PDFController@pdf');
 Route::get('/checkuser', 'LoginController@checkuser');
