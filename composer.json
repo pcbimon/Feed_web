@@ -11,10 +11,10 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
-        "mpdf/mpdf": "^6.1",
         "niklasravnsborg/laravel-pdf": "^1.5",
         "twbs/bootstrap": "4.0.0-alpha.6",
-        "simplesoftwareio/simple-qrcode": "~1"
+        "simplesoftwareio/simple-qrcode": "~1",
+        "maatwebsite/excel": "~2.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
