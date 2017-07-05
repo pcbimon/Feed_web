@@ -167,6 +167,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        'Maatwebsite\Excel\ExcelServiceProvider',
         /*
          * Package Service Providers...
          */
@@ -235,6 +236,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
     ],
 
