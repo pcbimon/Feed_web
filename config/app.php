@@ -167,8 +167,11 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+<<<<<<< HEAD
         'Maatwebsite\Excel\ExcelServiceProvider',
         Zizaco\Entrust\EntrustServiceProvider::class,
+=======
+>>>>>>> parent of 4559545... config vendor
         /*
          * Package Service Providers...
          */
@@ -237,8 +240,11 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+<<<<<<< HEAD
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+=======
+>>>>>>> parent of 4559545... config vendor
 
     ],
 
