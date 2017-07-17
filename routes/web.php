@@ -60,3 +60,7 @@ Route::group(['middleware'=>['web','auth']],function(){
 // Route::post ( '/addItem', 'IndexController@addItem' );
 // Route::post ( '/editItem', 'IndexController@editItem' );
 // Route::post ( '/deleteItem', 'IndexController@deleteItem' );
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

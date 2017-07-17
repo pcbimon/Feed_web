@@ -168,6 +168,7 @@ return [
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         'Maatwebsite\Excel\ExcelServiceProvider',
+        Zizaco\Entrust\EntrustServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -237,6 +238,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 
